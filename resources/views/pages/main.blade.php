@@ -1,7 +1,9 @@
+
         <div class="main_page">
             <div class="wrapper">
                 <div class="main_slang">
-                    <p>Блог Филатова Никита</p>
+                    <p>Блог Филатова Никиты</p>
+                    <p class = "text">Я являюсь веб разрабочиком здесь вы сможете найти всю подробную информацию обо мне, <br>а также посмотреть мои проекты !</p>
                 </div>
             </div>
         </div>
@@ -12,4 +14,4 @@
                     <a href = "{{ route('site.main.portfolio') }}" class="portfolio_block"><div class="text">Портфолио</div></a>
                 </div>
             </div>
-        </div>>
+        </div>
