@@ -7,7 +7,7 @@
             <input type = "text" placeholder="Search">
             <ul>
                 <li><a href = "{{ route('site.main.login') }}">Войти</a></li>
-                <li><a href = "{{ route('site.main.about') }}">Главная</a></li>
+                <li><a href = "{{ route('site.main.index') }}">Главная</a></li>
                 <li><a href = "{{ route('site.main.about') }}">Об авторе</a></li>
                 <li><a href = "{{ route('site.main.portfolio') }}">Портфолио</a></li>
                 <li><a href = "{{ route('site.main.articles') }}">Статьи</a></li>
@@ -40,7 +40,7 @@
 <nav>
     <div class="wrapper">
         <ul>
-            <li><a href="{{ route('site.main.about') }}">Главная</a></li>
+            <li><a href="{{ route('site.main.index') }}">Главная</a></li>
             <li><a href="{{ route('site.main.about') }}">Об авторе</a></li>
             <li><a href="{{ route('site.main.portfolio') }}">Портфолио</a></li>
             <li><a href="{{ route('site.main.articles') }}">Статьи</a></li>
