@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\RegisterFormRequest;
+use App\Http\Requests\RequestRegistration;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -11,15 +11,7 @@ use Illuminate\Support\Facades\DB;
 class LoginController extends Controller {
 
     public function getLogin() {
-        return view('layouts.secondary', ['page' => 'auth.login']);
-    }
-
-    public function postLogin(Request $request) {
-        if (!empty($request->input('one_btn'))) {
-            return $this->login($request);
-        } else {
-            return $this->registration($request);
-        }
+        return view('layouts.secondary', ['page' => 'auth.pageLogin']);
     }
 
     public function login(Request $request) {
@@ -37,14 +29,8 @@ class LoginController extends Controller {
         }
     }
 
-    public function registration(Request $request) {
-        $this->validate($request, ['*' => 'required',
-            'name' => 'min:3|max:15',
-            'email' => 'email|unique:users',
-            'password' => 'min:6|confirmed',
-        ]);
-
-        DB::table('users')->insert([
+    public function registration(RequestRegistration $request) {
+             DB::table('users')->insert([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Филатов Никита - веб разработчик</title>
+        <title>Филатов Никита - {{$title}}</title>
          <link href="{{url('css/style.css')}}" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700" rel="stylesheet">

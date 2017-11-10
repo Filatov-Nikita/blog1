@@ -20,10 +20,13 @@ Route::get('/about', function () {
 
 
 Route::get('/portfolio', function () {
-    return view('layouts.primary', ['page' => 'pages.portfolio']);
+    return view('layouts.primary', ['page' => 'pages.portfolio', 'title' => 'Портфолио']);
 })->name('site.main.portfolio');
 
 Route::get('/articles', function () {
     return view('layouts.primary', ['page' => 'pages.articles']);
 })->name('site.main.articles');
+
+Route::get('/articles/orm', 'ArticlesController@orm')
+        ->name('site.main.articlesOrm');
 
