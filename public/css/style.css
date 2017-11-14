@@ -40,7 +40,6 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  align-content: center;
 }
 
 .container .item .foto .dark p {
@@ -48,14 +47,16 @@
   font-style: italic;
   font-weight: 100;
   color: #fff;
+  flex-basis: 60%;
 }
 
 .container .item .foto .dark:hover {
   background: rgba(103, 100, 115, 0.8);
 }
 
-.container .item .foto img {
-  display: block;
+.container .item .foto .dark .logo {
+  flex-basis: 30%;
+  text-align: center;
 }
 
 .container .item .underline {
@@ -141,32 +142,33 @@
   color: #fff;
 }
 
-.one_port {
-  padding: 15px 0;
-  background: #787488;
-  text-align: center;
-  color: #fff;
-  font: 24px lora;
-}
-
-.content {
-  text-align: center;
-  padding: 20px;
-  color: #000;
-  font: 22px roboto;
-  line-height: 1.5;
-}
-
-.description_port {
-  padding: 10px;
-  background: #dc6655;
-  font: 100 22px 'Open sans';
+.one_column .main_img {
+  max-height: 350px;
+  overflow: hidden;
   margin-bottom: 15px;
-  color: #fff;
 }
 
-.text {
+.one_column .title {
+  font: 32px lora;
+  text-align: center;
   margin-bottom: 15px;
+}
+
+.one_column .inner {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.one_column .description {
+  text-align: center;
+  font: 20px 'marck script';
+  color: #5f5f5f;
+  margin-bottom: 25px;
+}
+
+.one_column .content {
+  text-align: center;
+  font: 24px roboto;
 }
 
 .one_column .auth_page .container {
@@ -253,7 +255,7 @@
 
 .main_page .wrapper .main_slang .text {
   margin-top: 15px;
-  font: 22px 'marck script';
+  font: 24px 'marck script';
 }
 
 .main_content {
@@ -308,22 +310,6 @@
   color: #fff;
   text-decoration: none;
   font: 80px 'marck script';
-}
-
-.last_work {
-  background: #787488;
-  padding: 15px;
-}
-
-.last_work .wrapper {
-  text-align: center;
-  color: #fff;
-  font: 30px lora;
-}
-
-.last_work_block {
-  min-height: 200px;
-  background: #fff;
 }
 
 body,
@@ -866,9 +852,21 @@ footer .copyright {
   nav {
     display: none;
   }
+
+  .columns .wrapper .main .one_column .about {
+    font-size: 20px;
+  }
 }
 
 @media screen and (max-width: 730px) {
+  .container .item .foto .dark p {
+    font-size: 24px;
+  }
+
+  .container .item .underline {
+    padding: 10px 0;
+  }
+
   .wrapper {
     padding-left: 15px;
     padding-right: 15px;
@@ -901,6 +899,10 @@ footer .copyright {
 }
 
 @media screen and (max-width: 560px) {
+  .container .item .foto .dark p {
+    font-size: 20px;
+  }
+
   .state .container .item .foto {
     min-height: 150px;
   }
@@ -911,7 +913,7 @@ footer .copyright {
 
   .main_content .different_block .about_block,
   .main_content .different_block .portfolio_block {
-    min-height: 250px;
+    min-height: 350px;
   }
 
   .wrapper {
@@ -922,9 +924,43 @@ footer .copyright {
   header .header_img {
     min-height: 200px;
   }
+
+  .columns .wrapper .main .one_column .about {
+    font-size: 18px;
+  }
+
+  .columns .wrapper .main .one_column .about p {
+    line-height: 35px;
+  }
+
+  .columns .wrapper .main .one_column .name h2 {
+    font-size: 42px;
+  }
+
+  .columns .wrapper .main .one_column .name .citat {
+    font-size: 22px;
+  }
+
+  .columns .wrapper .main .one_column .help,
+  .columns .wrapper .main .one_column .ask {
+    font-size: 24px;
+  }
+
+  .columns .wrapper .main .one_column .me {
+    font-size: 16px;
+  }
+
+  .columns .wrapper .main .one_column .me p {
+    line-height: 1.5;
+  }
 }
 
 @media screen and (max-width: 360px) {
+  .main_content .different_block .about_block,
+  .main_content .different_block .portfolio_block {
+    min-height: 50px;
+  }
+
   .wrapper {
     padding-left: 15px;
     padding-right: 15px;

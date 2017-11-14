@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Articles; 
+use App\Models\Article;  
 class ArticlesController extends Controller
 {
-    public function orm(Articles $articles) {
+    public function orm(Article $articles) {
        /* $articl->title = 'ss';
         $articl->content = 'sdasd';
         $articl->save();
@@ -22,6 +22,11 @@ class ArticlesController extends Controller
         $articl = Articles::where('title', 'like', 'N%')->get();
         dump($articl);
        */
+        $article = $articles::find(2);
+        $comment = $article->comments;
+        dump($comment->count());
+        
         return 'orm';
     }
+    
 }
