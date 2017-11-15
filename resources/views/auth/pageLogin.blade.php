@@ -6,6 +6,7 @@
         @section('login')
         @include('auth.login')
         @show
+        
         @section('registration')
         @include('auth.registration')
         @show
