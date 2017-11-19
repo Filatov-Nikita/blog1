@@ -17,6 +17,7 @@ class TestController extends Controller
         </form>';
     }
 
+
     public function testPost(Request $request, Uploader $uploader, Upload $uploadModel, Project $projects)
     {
         $rules = [

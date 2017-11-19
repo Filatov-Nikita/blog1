@@ -39,4 +39,3 @@ Route::get('/orm', 'ArticlesController@orm')
  
   Route::get('/upload', 'TestController@testGet');
   Route::post('/upload', 'TestController@testPost');
-        
