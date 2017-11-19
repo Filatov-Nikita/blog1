@@ -62,7 +62,7 @@ class Uploader
 
     public function upload($section = null)
     {
-        $basePath = !is_null($section) ?  config('blog.uploadPath', storage_path()) . '/'. $section : config('blog.uploadPath', storage_path()) . '/' . config('blog.defaultUploadSection', 'files');
+        $basePath = !is_null($section) ?  config('blog.uploadPath') . '/'. $section : config('blog.uploadPath') . '/' . config('blog.defaultUploadSection', 'files');
         $newName = sha1($this->props['oldname'] . microtime(true));
         $newDir = substr($newName, 0, 1) . '/' . substr($newName, 0, 3);
         $this->uploadPath = str_replace('/', '.', $newDir . '/' . $newName);

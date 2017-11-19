@@ -769,13 +769,20 @@ nav .wrapper ul li a:hover {
 
 .columns .wrapper .main .two_column .links ul li {
   text-align: center;
-  margin-bottom: 20px;
 }
 
 .columns .wrapper .main .two_column .links ul li a {
+  padding: 10px 0;
   font: 24px 'Lora';
   color: #464342;
   text-decoration: none;
+  display: block;
+  width: 100%;
+  transition: background, 0.3s;
+}
+
+.columns .wrapper .main .two_column .links ul li a:hover {
+  background: rgba(120, 116, 136, 0.5);
 }
 
 footer {

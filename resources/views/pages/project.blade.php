@@ -1,6 +1,6 @@
 
 <div class="main_img">
-    <img src="https://s1.1zoom.ru/big0/930/Coast_Sunrises_and_sunsets_Waves_USA_Ocean_Kaneohe_521540_1280x775.jpg" alt="">
+    <img src="{{asset('/uploads') . '/' . config('blog.defaultUploadSection') . '/' . str_replace('.', '/', $project->path)}}" alt="">
 </div>
 <div class="title">{{$project->name}}</div>
 <div class="inner">

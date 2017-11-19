@@ -36,3 +36,7 @@ Route::get('/orm', 'ArticlesController@orm')
      Route::get('/{id}', 'ProjectsController@project')
         ->name('site.main.articlesProject');
  });
+ 
+  Route::get('/upload', 'TestController@testGet');
+  Route::post('/upload', 'TestController@testPost');
+        
