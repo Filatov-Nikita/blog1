@@ -28,5 +28,11 @@ class ArticlesController extends Controller
         
         return 'orm';
     }
-    
+
+    public function listPost(Article $article) {
+        $articles = $article->get();
+        return view('layouts.primary', ['page' => 'pages.articles', 'title' => 'Статьи', 'articles' => $articles]);
+    }
+
+
 }

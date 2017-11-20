@@ -19,23 +19,22 @@ Route::get('/about', function () {
 })->name('site.main.about');
 
 
-Route::group(['prefix' => '/articles'], function() {
-    Route::get('/', function () {
-    return view('layouts.primary', ['page' => 'pages.articles']);
-})->name('site.main.articles');
+Route::group(['prefix' => '/articles'], function () {
+    Route::get('/', 'ArticlesController@listPost')
+        ->name('site.main.articles');
 
-Route::get('/orm', 'ArticlesController@orm')
+    Route::get('/orm', 'ArticlesController@orm')
         ->name('site.main.articlesOrm');
 });
 
 
- Route::group(['prefix' => '/portfolio'], function() {
-     Route::get('/', 'ProjectsController@portfolio')
+Route::group(['prefix' => '/portfolio'], function () {
+    Route::get('/', 'ProjectsController@portfolio')
         ->name('site.main.portfolio');
-     
-     Route::get('/{id}', 'ProjectsController@project')
+
+    Route::get('/{id}', 'ProjectsController@project')
         ->name('site.main.articlesProject');
- });
- 
-  Route::get('/upload', 'TestController@testGet');
-  Route::post('/upload', 'TestController@testPost');
+});
+
+Route::get('/upload', 'TestController@testGet');
+Route::post('/upload', 'TestController@testPost');
