@@ -24,3 +24,6 @@ if (!function_exists('uploads_path')) {
         return storage_path('app.uploads');
     }
 }
+function upload_path($path) {
+    return asset('/uploads') . '/' . config('blog.defaultUploadSection') . '/' . str_replace('.', '/', $path);
+}

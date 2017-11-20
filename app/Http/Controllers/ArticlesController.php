@@ -33,6 +33,9 @@ class ArticlesController extends Controller
         $articles = $article ->orderBy('created_at', 'DESC')->get();
         return view('layouts.primary', ['page' => 'pages.articles', 'title' => 'Статьи', 'articles' => $articles]);
     }
-
+    public function getPostById($id, Article $article) {
+        $articleOne = Article::find($id);
+        return view('layouts.primary', ['page' => 'pages.article', 'title' => 'Статьи', 'articleOne' => $articleOne]);
+    }
 
 }

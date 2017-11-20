@@ -22,7 +22,8 @@ Route::get('/about', function () {
 Route::group(['prefix' => '/articles'], function () {
     Route::get('/', 'ArticlesController@listPost')
         ->name('site.main.articles');
-
+    Route::get('/{id}', 'ArticlesController@getPostById')
+        ->name('site.main.articlesById');
     Route::get('/orm', 'ArticlesController@orm')
         ->name('site.main.articlesOrm');
 });

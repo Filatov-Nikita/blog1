@@ -90,7 +90,6 @@
 
 .state .container .item .foto {
   position: relative;
-  min-height: 300px;
   overflow: hidden;
 }
 
@@ -108,11 +107,7 @@
 
 .state .container .item .foto img {
   display: block;
-  max-width: none;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateY(-50%) translateX(-50%);
+  width: 100%;
 }
 
 .state .container .item .name_post {
@@ -127,6 +122,7 @@
 }
 
 .state .container .item .description {
+  text-align: left;
   background: #efeded;
   font: 18px roboto;
   color: #364067;
@@ -820,10 +816,6 @@ footer .copyright {
     width: calc(100% - 30px);
   }
 
-  .state .container .item .foto img {
-    width: 100%;
-  }
-
   .one_column .auth_page .container .auth {
     margin-bottom: 15px;
   }
@@ -911,11 +903,7 @@ footer .copyright {
   }
 
   .state .container .item .foto {
-    min-height: 150px;
-  }
-
-  .state .container .item .foto img {
-    width: auto;
+    max-height: 200px;
   }
 
   .main_content .different_block .about_block,

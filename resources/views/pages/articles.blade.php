@@ -7,11 +7,11 @@
             <div class="item">
                 <div class="line"></div>
 
-                <a class="foto" href="#">
+                <a class="foto" href="{{route('site.main.articlesById', ['id' => $article->id])}}">
                     <div class="dark"></div>
-                    <img src="{{asset('/uploads') . '/' . config('blog.defaultUploadSection') . '/' . str_replace('.', '/', $article->image)}}" alt=""/>
+                    <img src="{{upload_path($article->image)}}" alt=""/>
                 </a>
-                <div class="name_post"><a href="#">{{$article->title}}</a></div>
+                <div class="name_post"><a href="{{route('site.main.articlesById', ['id' => $article->id])}}">{{$article->title}}</a></div>
                 <div class="description">
                    {{$article->description}}
                 </div>
