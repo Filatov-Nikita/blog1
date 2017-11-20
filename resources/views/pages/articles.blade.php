@@ -9,7 +9,7 @@
 
                 <a class="foto" href="#">
                     <div class="dark"></div>
-                    <img src="img/Blog-intro.jpg" alt=""/>
+                    <img src="{{asset('/uploads') . '/' . config('blog.defaultUploadSection') . '/' . str_replace('.', '/', $article->image)}}" alt=""/>
                 </a>
                 <div class="name_post"><a href="#">{{$article->title}}</a></div>
                 <div class="description">
