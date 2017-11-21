@@ -1,14 +1,15 @@
-<div class="one_port">
+<div class="portfolio">
     <p>Авторизация / Регистрация</p>
 </div>
 <div class="auth_page">
     <div class="container">
-      @section('login')
+        @section('login')
         @include('auth.login')
-       @show
+        @show
+        
         @section('registration')
         @include('auth.registration')
-      @show
-      
+        @show
+
     </div>
 </div>
