@@ -38,4 +38,5 @@ class ArticlesController extends Controller
         return view('layouts.primary', ['page' => 'pages.article', 'title' => 'Статьи', 'articleOne' => $articleOne]);
     }
 
+
 }

@@ -1,6 +1,6 @@
 
 <div class="main_img">
-    <img src="{{uploads_path($articleOne->image)}}" alt="">
+    <img src="{{upload_path($articleOne->image)}}" alt="">
 </div>
 <div class="title">{{$articleOne->title}}</div>
 <div class="inner">
