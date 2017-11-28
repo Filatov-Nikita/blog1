@@ -30,5 +30,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('create', function ($user) {
             return $user->can_create == 1;
         });
+        Gate::define('edit', function ($user) {
+            return $user->can_edit == 1;
+        });
+        Gate::define('delete', function ($user) {
+            return $user->can_delete == 1;
+        });
     }
 }

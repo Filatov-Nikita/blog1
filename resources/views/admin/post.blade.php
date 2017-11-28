@@ -6,9 +6,15 @@
     @endif
     <div class="main_menu">
         <ul>
-            <li><a href="{{url('admin/post/create')}}">Добавить</a></li>
-            <li><a href="#">Редактировать</a></li>
+            @can('create')
+                <li><a href="{{url('admin/post/create')}}">Добавить</a></li>
+            @endcan
+                @can('edit')
+            <li><a href="{{url('admin/post/edit')}}">Редактировать</a></li>
+                @endcan
+                @can('delete')
             <li><a href="#">Удалить</a></li>
+                @endcan
         </ul>
     </div>
 @endsection
