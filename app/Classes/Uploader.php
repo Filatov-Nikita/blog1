@@ -1,6 +1,6 @@
 <?php namespace App\Classes;
 
-use App\Models\Upload;
+use  App\Models\Upload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 

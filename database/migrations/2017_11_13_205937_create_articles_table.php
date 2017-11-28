@@ -17,12 +17,8 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->string('image',255)->nullable();
             $table->string('title',255);
-            $table->string('slug',255);
-            $table->string('tagline',255)->nullable();
-            $table->text('announce')->nullable();
-            $table->text('fulltext')->nullable();
-            $table->integer('views_count')->nullable()->default(0);
-            $table->string('status',10)->default('OWNER');
+            $table->string('description',255);
+            $table->text('content');
             $table->timestamps();
             $table->softDeletes();
         });
