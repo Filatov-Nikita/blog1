@@ -1,4 +1,4 @@
 @extends('admin.base')
-@section('content')
+@section('right_column')
 У вас нет прав на совершение действие
     @endsection

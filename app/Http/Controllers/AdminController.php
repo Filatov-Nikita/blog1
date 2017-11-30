@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Gate;
 
 class AdminController extends Controller
 {
-    protected  $can_create;
     protected $rules;
     public function __construct()
     {
@@ -42,25 +41,16 @@ class AdminController extends Controller
         return view('admin.main');
     }
 
-    public function postMenu()
-    {
-
-        return view('admin.post');
-    }
 
     public function postCreate()
     {
-        if(!Gate::allows('create', Auth::user())) {
-            return view('admin.notPolice');
-        }
+        $this->authorize('create');
         return view('admin.postCreate');
     }
 
     public function postEdit()
 {
-    if(!Gate::allows('edit', Auth::user())) {
-        return view('admin.notPolice');
-    }
+    $this->authorize('edit');
     $all_articles = Article::get();
     return view('admin.postEdit', ['all_articles' => $all_articles]);
 
@@ -68,9 +58,8 @@ class AdminController extends Controller
 
     public function postEditById($id)
     {
-        if(!Gate::allows('edit', Auth::user())) {
-            return view('admin.notPolice');
-        }
+        $this->authorize('edit');
+        session(['post_id' => $id]);
         $article = Article::find($id);
         return view('admin.postEditById', ['article' => $article]);
 
@@ -78,9 +67,7 @@ class AdminController extends Controller
 
     public function postDelete()
     {
-        if(!Gate::allows('delete', Auth::user())) {
-            return view('admin.notPolice');
-        }
+
 
     }
 
@@ -94,14 +81,19 @@ class AdminController extends Controller
         $ArticleModel = Article::create($request->all());
         $ArticleModel->image = $uploadedPath;
         $ArticleModel->save();
-        return redirect()->route('site.admin.postMenu')->with('success', 'Добавление поста выполнено успешно');
+        return redirect()->route('admin.index')->with('success', 'Добавление поста выполнено успешно');
 
     }
-    public function postEditSend($id ,RequestPostCreate $request, Uploader $uploader)
+    public function postEditSend(RequestPostCreate $request, Uploader $uploader)
     {
-        $ArticleModel = Article::find($id);
+        if ($uploader->validate($request, 'file', $this->rules)) {
+            $uploadedPath = $uploader->upload();
+        }
+        $ArticleModel = Article::find(session('post_id'));
         $ArticleModel->update($request->all());
-        return redirect()->route('site.admin.postMenu')->with('success', 'Редактирование поста выполнено успешно');
+        $ArticleModel->image = $uploadedPath;
+        $ArticleModel->save();
+        return redirect()->route('admin.index')->with('success', 'Редактирование поста выполнено успешно');
 
     }
 }

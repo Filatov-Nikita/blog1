@@ -28,8 +28,8 @@
        @yield('header')   
         @yield('content', 'I`m content!')
          @yield('footer', 'I`m content!')
-        <script src="js/jquery-3.2.0.min.js"></script>
-        <script src="js/fnmenu.jquery.js"></script>
-        <script src="js/scripts.js"></script>
+        <script src="{{url('js/jquery-3.2.0.min.js')}}"></script>
+        <script src="{{url('js/fnmenu.jquery.js')}}"></script>
+        <script src="{{url('js/scripts.js')}}"></script>
     </body>
 </html>
