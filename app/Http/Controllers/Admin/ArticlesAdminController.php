@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Http\Requests\RequestPostCreate;
 use App\Classes\Uploader;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
-class AdminController extends Controller
+
+class ArticlesAdminController extends Controller
 {
     protected $rules;
     public function __construct()
@@ -36,12 +38,6 @@ class AdminController extends Controller
 
     }
 
-    public function index()
-    {
-        return view('admin.main');
-    }
-
-
     public function postCreate()
     {
         $this->authorize('create');
@@ -49,12 +45,12 @@ class AdminController extends Controller
     }
 
     public function postEdit()
-{
-    $this->authorize('edit');
-    $all_articles = Article::get();
-    return view('admin.postEdit', ['all_articles' => $all_articles]);
+    {
+        $this->authorize('edit');
+        $all_articles = Article::get();
+        return view('admin.postEdit', ['all_articles' => $all_articles]);
 
-}
+    }
 
     public function postEditById($id)
     {
@@ -71,9 +67,9 @@ class AdminController extends Controller
 
     }
 
-
     public function postCreateSend(RequestPostCreate $request, Uploader $uploader)
     {
+        $this->authorize('create', Article::class);
         if ($uploader->validate($request, 'file', $this->rules)) {
             $uploadedPath = $uploader->upload();
         }
@@ -86,12 +82,13 @@ class AdminController extends Controller
     }
     public function postEditSend(RequestPostCreate $request, Uploader $uploader)
     {
-        if ($uploader->validate($request, 'file', $this->rules)) {
-            $uploadedPath = $uploader->upload();
-        }
+
         $ArticleModel = Article::find(session('post_id'));
-        $ArticleModel->update($request->all());
-        $ArticleModel->image = $uploadedPath;
+        $ArticleModel->fill($request->all());
+            if ($uploader->validate($request, 'file', $this->rules)) {
+                $uploadedPath = $uploader->upload();
+                $ArticleModel->image = $uploadedPath;
+            }
         $ArticleModel->save();
         return redirect()->route('admin.index')->with('success', 'Редактирование поста выполнено успешно');
 

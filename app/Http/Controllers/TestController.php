@@ -5,7 +5,8 @@ use App\Classes\Uploader;
 use App\Models\Upload;
 use App\Models\Project;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RegistrationMail;
 class TestController extends Controller
 {
         public function testGet(Uploader $uploader)
@@ -39,7 +40,7 @@ class TestController extends Controller
                 'image/tiff'
             ],
         ];
-        
+
         if ($uploader->validate($request, 'file', $rules)) {
             $uploadedPath = $uploader->upload();
 
@@ -48,10 +49,10 @@ class TestController extends Controller
                 $project->path = $uploadedPath;
                 $props = $uploader->getProps();
                  $project->ext = $props['ext'];
-                
+
                  $project->save();
                 dump($project);
-                
+
             }
 
             return $uploadedPath;
@@ -62,5 +63,19 @@ class TestController extends Controller
         }
 
         //return $uploader->getErrors();
+    }
+    public function mail()
+    {
+
+        Mail::to('nikita-filatov51@yandex.ru')
+           ->send(
+               new registrationMail(['email' => 'nikita-filatov51@yandex.ru', 'name' => 'nikita'])
+           );
+//        Mail::raw('husttext', function($message) {
+//            $message->from('nikita45454@gmail.com');
+//            $message->to('nikita-filatov51@yandex.ru');
+//           // $message->setContentType('text/html');
+//            $message->subject('Письмо с блога');
+//        });
     }
 }

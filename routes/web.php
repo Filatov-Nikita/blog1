@@ -39,3 +39,5 @@ Route::group(['prefix' => '/portfolio'], function () {
 
 Route::get('/upload', 'TestController@testGet');
 Route::post('/upload', 'TestController@testPost');
+Route::get('/mail', 'TestController@mail');
+Route::get('/confirmed/{hash}', 'LoginController@confirmed_user')->name('confirmed');

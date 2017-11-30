@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('user_hash');
+            $table->tinyInteger('registration_status')->default(0);
             $table->tinyInteger('can_create')->default(0);
             $table->tinyInteger('can_edit')->default(0);
             $table->tinyInteger('can_delete')->default(0);

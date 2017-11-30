@@ -16,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Model\Article' => 'App\Policies\PostPolicy',
     ];
 
     /**
@@ -26,6 +27,9 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        Gate::define('confirmed_user', function ($user) {
+            return $user->registration_status == 1;
+        });
 
         Gate::define('create', function ($user) {
             return $user->can_create == 1;

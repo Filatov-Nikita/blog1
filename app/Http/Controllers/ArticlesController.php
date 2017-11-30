@@ -29,11 +29,11 @@ class ArticlesController extends Controller
 //        return 'orm';
 //    }
 
-    public function listPost(Article $article) {
-        $articles = $article ->orderBy('created_at', 'DESC')->get();
+    public function listPost() {
+        $articles = Article::orderBy('created_at', 'DESC')->get();
         return view('layouts.primary', ['page' => 'pages.articles', 'title' => 'Статьи', 'articles' => $articles]);
     }
-    public function getPostById($id, Article $article) {
+    public function getPostById($id) {
         $articleOne = Article::find($id);
         return view('layouts.primary', ['page' => 'pages.article', 'title' => 'Статьи', 'articleOne' => $articleOne]);
     }

@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use App\Http\Requests\RequestRegistration;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RegistrationMail;
+use App\Models\User;
 
 class LoginController extends Controller {
 
@@ -15,9 +19,11 @@ class LoginController extends Controller {
     }
 
     public function login(Request $request) {
+
         $authResult = Auth::attempt([
                     'email' => $request->input('email'),
                     'password' => $request->input('password'),
+                    'registration_status' => 1
         ]);
         if ($authResult) {
             return redirect()
@@ -30,17 +36,33 @@ class LoginController extends Controller {
     }
 
     public function registration(RequestRegistration $request) {
+            $hash = sha1($request->input('email'));
              DB::table('users')->insert([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
+                 'user_hash' => $hash,
             'created_at' => Carbon::createFromTimestamp(time())
                     ->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::createFromTimestamp(time())
                     ->format('Y-m-d H:i:s'),
         ]);
+        Mail::to($request->input('email'))
+            ->send(
+                new registrationMail([
+                    'email' => $request->input('email'),
+                    'name' => $request->input('name'),
+                    'hash' => $hash])
+            );
 
         return redirect()->route('site.main.about')->with('register', true);
+    }
+
+    public function confirmed_user($hash) {
+        $user = User::Where('user_hash', $hash)->first();
+        $user->registration_status = 1;
+        $user->save();
+        return redirect()->route('site.main.login');
     }
 
     public function getLogout() {
