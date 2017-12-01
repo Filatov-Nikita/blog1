@@ -164,14 +164,19 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
+            Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
             Barryvdh\Debugbar\ServiceProvider::class,
             Intervention\Image\ImageServiceProvider::class,
+
+
         /*
          * Application Service Providers...
          */
+
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,

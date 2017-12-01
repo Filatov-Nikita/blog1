@@ -8,6 +8,6 @@
         {{$articleOne->description}}
     </div>
     <div class="content">
-        {{$articleOne->content}}
+        {!!$articleOne->content!!}
     </div>
 </div>

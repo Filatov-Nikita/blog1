@@ -7,9 +7,9 @@
             {{csrf_field()}}
             <label for="title">Название поста</label> <input type="text" name="title">
             <label for="description">Описание поста</label> <input type="text" name = "description">
-            <input type="file" name = "file">
-            <textarea name="content"></textarea>
-            <input type="submit" value="Сохранить">
+            <input type="file" name = "file"><br>
+            <textarea name="content" id = "content"></textarea><br>
+            <input type="submit" value="Сохранить"><br>
         </form>
     </div>
 @endsection

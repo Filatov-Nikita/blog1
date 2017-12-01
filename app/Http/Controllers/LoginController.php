@@ -24,7 +24,7 @@ class LoginController extends Controller {
                     'email' => $request->input('email'),
                     'password' => $request->input('password'),
                     'registration_status' => 1
-        ]);
+        ], true);
         if ($authResult) {
             return redirect()
                             ->route('site.main.about');
