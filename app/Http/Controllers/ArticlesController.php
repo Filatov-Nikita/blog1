@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Article;  
+use App\Models\Article;
+use Illuminate\Support\Facades\Cache;
 class ArticlesController extends Controller
 {
 //    public function orm(Article $articles) {
@@ -12,14 +13,14 @@ class ArticlesController extends Controller
 //        $articl->save();
 //        */
 //        /*
-//        $articl = Articles::find(1);
+//        $articl = ArticlesController::find(1);
 //        $articl->title = 'Nikita';
 //        $articl->save();
 //        dump($articl);
 //         *
 //         */
 //        /*
-//        $articl = Articles::where('title', 'like', 'N%')->get();
+//        $articl = ArticlesController::where('title', 'like', 'N%')->get();
 //        dump($articl);
 //       */
 //        $article = $articles::find(2);
@@ -29,14 +30,27 @@ class ArticlesController extends Controller
 //        return 'orm';
 //    }
 
-    public function listPost() {
-        $articles = Article::orderBy('created_at', 'DESC')->get();
+    public function listPost(Request $request) {
+
+//        $articles = Cache::remember('ListPost', 5, function () {
+//           return Article::orderBy('created_at', 'DESC')->Paginate(2);
+//        });
+
+        $articles = Article::orderBy('created_at', 'DESC')->Simplepaginate(4);
+
+        if($request->ajax()) {
+            return [
+                'articles' => view('blocks.article')->with(compact('articles'))->render(),
+                'next_page' => $articles->nextPageUrl()
+            ];
+        }
+
         return view('layouts.primary', ['page' => 'pages.articles', 'title' => 'Статьи', 'articles' => $articles]);
     }
     public function getPostById($id) {
-        $articleOne = Article::find($id);
-        return view('layouts.primary', ['page' => 'pages.article', 'title' => 'Статьи', 'articleOne' => $articleOne]);
-    }
 
+            $articleOne = Article::findOrFail($id);
+            return view('layouts.primary', ['page' => 'pages.article', 'title' => 'Статьи', 'articleOne' => $articleOne]);
+    }
 
 }

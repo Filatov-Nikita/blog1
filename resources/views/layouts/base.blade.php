@@ -12,6 +12,7 @@
             <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=latin-ext" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=Marck+Script&amp;subset=cyrillic" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=Pacifico&amp;subset=latin-ext" rel="stylesheet">
+            <script src="{{url('js/jquery-3.2.0.min.js')}}"></script>
             <meta name="viewport" content="width=device-width, initial-scale=0.8" >
         @show
     </head>
@@ -28,7 +29,7 @@
        @yield('header')   
         @yield('content', 'I`m content!')
          @yield('footer', 'I`m content!')
-        <script src="{{url('js/jquery-3.2.0.min.js')}}"></script>
+
         <script src="{{url('js/fnmenu.jquery.js')}}"></script>
         <script src="{{url('js/scripts.js')}}"></script>
         <script src="{{ asset('/js/ckeditor/ckeditor.js') }}"
