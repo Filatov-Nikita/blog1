@@ -13,7 +13,7 @@
                                      @else 
                                       <li><a href="{{ route('site.main.logout') }}">Выйти</a></li>
                                     @endif
-                                <li><a href="">Написать мне</a></li>
+                                <li><a href="{{route('site.main.feedback')}}">Написать мне</a></li>
                                 <li><a href="">Поддержать меня</a></li>
                             </ul>
                         </div>

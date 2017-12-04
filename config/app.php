@@ -173,9 +173,11 @@ return [
             Intervention\Image\ImageServiceProvider::class,
 
 
+
         /*
          * Application Service Providers...
          */
+        App\Providers\ComposerServiseProvider::class,
 
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,

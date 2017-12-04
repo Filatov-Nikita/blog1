@@ -26,7 +26,7 @@
                 <label><input type = "text"></label>
             </div>
             @if(Auth::check())
-            <div class="auth">Вы вошли как {{Auth::user()->name}}</div>
+            <div class="auth">Вы вошли как {{$userName}}</div>
             @else
             <div class="auth"><a href="{{ route('site.main.login') }}">Войти</a></div>
             @endif
