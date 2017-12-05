@@ -31,6 +31,9 @@ class FeedbackMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('mails.feedback')
+            ->from(['address' => $this->input['email']])
+            ->with(['data' => $this->input])
+            ->subject('Письмо с блога');
     }
 }

@@ -4,7 +4,8 @@
 <div class="feedback">
     <div class="wrapper">
         <div class="form">
-            <form action="POST">
+            <form action="" method="POST">
+                {{csrf_field()}}
                 <label for="name">Ваше имя</label><input type="text" name = "name">
                 <label for="email">Ваше email</label><input type="text" name = "email">
                 <textarea name="text" id="" placeholder="Текст сообщения"></textarea>

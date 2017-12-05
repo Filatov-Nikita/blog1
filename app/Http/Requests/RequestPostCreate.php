@@ -28,7 +28,6 @@ class RequestPostCreate extends FormRequest
             'title' => 'min:3|max:128',
             'description' => 'min:3',
             'content' => 'min:3',
-
         ];
     }
 }
