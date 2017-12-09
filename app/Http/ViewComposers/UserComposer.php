@@ -24,7 +24,11 @@ class UserComposer
     public function __construct()
     {
        $this->userName =  Cache::remember('userName', 100, function () {
-           return Auth::user()->name;
+           if(Auth::check()) {
+               return Auth::user()->name;
+           }
+           return null;
+
         });
 
     }
@@ -37,6 +41,6 @@ class UserComposer
      */
     public function compose(View $view)
     {
-        $view->with('userName', $this->userName);
+          $view->with('userName', $this->userName);
     }
 }

@@ -14,3 +14,19 @@
         </div>
     </div>
 </div>
+<script>
+    $(function(){
+        $('.form .btn').on('click',  function(e){
+            e.preventDefault();
+            $(this).css('background', '#351c1c').val('Подождите');
+            var form = $(this).parent('.form form');
+            $.post('{{url('/ajax/feedback')}}',
+                form.serialize(),
+                function(data){
+                if(data.res){
+                    $('.form .btn').css('background', '').val('Отправить');
+                }
+            });
+        });
+    });
+</script>

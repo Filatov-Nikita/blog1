@@ -38,7 +38,6 @@ Route::group(['prefix' => '/portfolio'], function () {
 });
 
 Route::get('/feedback', 'PageController@feedback')->name('site.main.feedback');
-Route::post('/feedback', 'PageController@feedbackPost')->name('site.main.feedbackPost');
 Route::get('/upload', 'TestController@testGet');
 Route::post('/upload', 'TestController@testPost');
 Route::get('/mail', 'TestController@mail');

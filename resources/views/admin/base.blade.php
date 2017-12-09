@@ -18,7 +18,7 @@
     <div class="main">
         <div class="left_panel">
             <div class="user">
-                <div class="name">{{Auth::user()->name}}</div>
+                <div class="name">{{$userName}}</div>
             </div>
             <div class="menu">
                 <ul class = "master">

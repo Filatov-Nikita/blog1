@@ -32,7 +32,7 @@ class FeedbackMail extends Mailable
     public function build()
     {
         return $this->view('mails.feedback')
-            ->from(['address' => $this->input['email']])
+            ->from(['address' => env('MAIL_USERNAME')])
             ->with(['data' => $this->input])
             ->subject('Письмо с блога');
     }
