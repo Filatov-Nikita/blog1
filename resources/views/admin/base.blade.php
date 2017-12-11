@@ -39,7 +39,7 @@
                     <li class = "hover">
                         Портфолио
                         <ul class = "slave">
-                            <li><a href="">Добавить</a></li>
+                            <li><a href="{{url('admin/project/create')}}">Добавить</a></li>
                             <li><a href="">Редактировать</a></li>
                             <li><a href="">Удалить</a></li>
                         </ul>

@@ -1,24 +1,22 @@
-
-                        <div class="portfolio">
+                <div class="portfolio">
                             <p>Портфолио</p>
                         </div>
                         <div class="container">
-                            @foreach($posts as $post)
+                            @foreach($projects as $project)
                             <div class="item">
-                                <div class="line"></div>    
-                                <a class="foto" href = "{{Route('site.main.articlesProject', $post->id)}}">
+                                <div class="line"></div>
+                                <a class="foto" href = "{{Route('site.main.articlesProject', $project->id)}}">
                                     <div class = "dark">
-                                        <img src="img/logo.png" alt=""/>
-                                        <p>{{$post->name}}</p>
+                                        <div class="logo"><img src="{{upload_path($project->logo)}}" alt=""/></div>
+                                        <p>{{$project->name}}</p>
                                     </div>
                                     <div class="logos"></div>
-                                    <img src="img/akiort.png" alt=""/>
-                                   
+                                    <img src="{{upload_path($project->image)}}" alt=""/>
+
                                 </a>
                                 <div class="underline">
-                                    <p class = "dolgo">Срок: 1 месяц</p>
+                                    <p class = "dolgo">Срок: {{$project->term}}</p>
                                 </div>
                             </div>
                             @endforeach
-                              
                         </div>

@@ -8,7 +8,7 @@ class ProjectsController extends Controller
 {
     public function portfolio(Project $projects) {
         $project = $projects->get();
-        return view('layouts.primary', ['page' => 'pages.portfolio', 'title' => 'Портфолио', 'posts' => $project]);
+        return view('layouts.primary', ['page' => 'pages.portfolio', 'title' => 'Портфолио', 'projects' => $project]);
     }
     
      public function project(Project $projects,int $id) {
