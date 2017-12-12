@@ -67,7 +67,7 @@ class ProjectsAdminController extends Controller
             }
         }
             $ProjectModel->save();
-        return redirect()->back()->with('success', 'Редактирование проекта выполнено успешно');
+        return redirect()->back()->with('successEditProject', 'Редактирование проекта выполнено успешно');
 
     }
 
