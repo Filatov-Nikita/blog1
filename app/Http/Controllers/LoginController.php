@@ -26,8 +26,7 @@ class LoginController extends Controller {
                     'registration_status' => 1
         ], true);
         if ($authResult) {
-            return redirect()
-                            ->route('site.main.about');
+            return back();
         } else {
             return redirect()
                             ->route('site.main.login')
