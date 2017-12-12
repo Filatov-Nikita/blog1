@@ -4,12 +4,13 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Article;
 use App\Models\Project;
 use App\Http\Requests\RequestPostCreate;
 use App\Classes\Uploader;
 class ProjectsAdminController extends Controller
 {
+    protected  $files = ['logo', 'image'];
+
     public function __construct()
     {
         $this->rules = [
@@ -43,8 +44,8 @@ class ProjectsAdminController extends Controller
     public function projectCreateSend(RequestPostCreate $request, Uploader $uploader)
     {
         $this->authorize('create', Article::class);
-        $files = ['logo', 'image'];
-        foreach ($files as $file) {
+        $this->files = ['logo', 'image'];
+        foreach ($this->files as $file) {
             if ($uploader->validate($request, $file, $this->rules)) {
                 $uploadedPath[$file] = $uploader->upload();
             }
@@ -55,11 +56,40 @@ class ProjectsAdminController extends Controller
         $ProjectModel->save();
         return redirect()->route('admin.index')->with('success', 'Добавление проекта выполнено успешно');
     }
+    public function projectEditSend(RequestPostCreate $request, Uploader $uploader)
+    {
+        $ProjectModel = Project::find(session('post_id'));
+        $ProjectModel->fill($request->all());
+
+        foreach ($this->files as $file) {
+            if ($uploader->validate($request, $file, $this->rules)) {
+                $ProjectModel->{$file} = $uploader->upload();
+            }
+        }
+            $ProjectModel->save();
+        return redirect()->back()->with('success', 'Редактирование проекта выполнено успешно');
+
+    }
 
     public function projectDelete()
     {
         $this->authorize('delete');
         $projects = Project::get();
         return view('admin.projectDelete', ['all_projects' => $projects]);
+    }
+
+    public function projectsList()
+    {
+        $this->authorize('edit');
+        $projects = Project::get();
+        return view('admin.projectsList', ['list_projects' => $projects]);
+    }
+
+    public function projectById($id)
+    {
+        $this->authorize('edit');
+        session(['post_id' => $id]);
+        $project = Project::find($id);
+        return view('admin.projectEdit', ['project' => $project]);
     }
 }
