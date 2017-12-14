@@ -40,8 +40,7 @@
                 });
 
             });*/
-        var page = $('.state .container').data('next-page');
-        console.log(page);
+
         $(window).scroll(fetchPosts);
 
         function fetchPosts() {
