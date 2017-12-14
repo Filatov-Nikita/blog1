@@ -9,7 +9,7 @@ $('.left_panel .menu ul.master li.hover').on('click', function() {
 		menu.removeClass('fixed');
 		if($(document).scrollTop() > 0) {
 			menu.addClass('fixed');
-			console.log(1);
+			
 		}
 	});
 	

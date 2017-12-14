@@ -40,14 +40,15 @@
                 });
 
             });*/
-
+        var page = $('.state .container').data('next-page');
+        console.log(page);
         $(window).scroll(fetchPosts);
 
         function fetchPosts() {
 
             var page = $('.state .container').data('next-page');
 
-            if(page !== null) {
+            if(page !== null && page !== '') {
 
                 clearTimeout( $.data( this, "scrollCheck" ) );
 
