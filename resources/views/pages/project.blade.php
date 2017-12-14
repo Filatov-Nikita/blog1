@@ -8,6 +8,6 @@
         {{$project->description}}
     </div>
     <div class="content">
-        {{$project->content}}
+        {!! $project->content !!}
     </div>
 </div>

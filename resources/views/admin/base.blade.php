@@ -39,9 +39,15 @@
                     <li class = "hover">
                         Портфолио
                         <ul class = "slave">
+                            @can('create')
                             <li><a href="{{url('admin/project/create')}}">Добавить</a></li>
-                            <li><a href="">Редактировать</a></li>
+                            @endcan
+                                @can('edit')
+                            <li><a href="{{url('admin/project/edit')}}">Редактировать</a></li>
+                                @endcan
+                                @can('delete')
                             <li><a href="">Удалить</a></li>
+                                @endcan
                         </ul>
                     </li>
                 </ul>
