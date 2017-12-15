@@ -1,3 +1,233 @@
+.menu {
+  padding-top: 35px;
+  padding-left: 32px;
+  box-sizing: border-box;
+  position: fixed;
+  width: 350px;
+  height: 100%;
+  background-image: url('../img/bg.jpg');
+  background-size: cover;
+}
+
+.menu .logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #fff;
+  text-align: center;
+  box-sizing: border-box;
+  font: 300 36px roboto;
+  padding-top: 20px;
+}
+
+.menu .name {
+  color: #fff;
+  font: 300 24px roboto;
+  margin-left: 25px;
+  align-self: center;
+}
+
+.menu .top {
+  display: flex;
+}
+
+.menu .bookmark {
+  font: 28px roboto;
+}
+
+.menu .bookmark ul.innerMenu {
+  display: none;
+}
+
+.menu .bookmark ul.innerMenu li {
+  padding-left: 25px;
+}
+
+.menu .bookmark ul.innerMenu li a {
+  font-size: 24px;
+}
+
+.menu .bookmark ul.outMenu {
+  margin-top: 150px;
+  margin-left: -32px;
+}
+
+.menu .bookmark ul.outMenu li {
+  margin: 12px 0;
+}
+
+.menu .bookmark ul.outMenu li:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.menu .bookmark a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  width: 100%;
+  padding: 12px 0 12px 40px;
+}
+
+.right {
+  width: 100%;
+  height: 300px;
+  padding-left: 350px;
+  box-sizing: border-box;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+fieldset,
+img,
+abbr {
+  border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+ul li {
+  list-style: none;
+}
+
+caption,
+th {
+  text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+sup {
+  vertical-align: text-top;
+}
+
+sub {
+  vertical-align: text-bottom;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+legend {
+  color: #000;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+main {
+  display: block;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wrapper {
+  max-width: 1280px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 960px) {
+  .wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
+
 .portfolio {
   padding: 20px 0;
   color: #fff;
@@ -403,7 +633,7 @@
 }
 
 .main .right_panel {
-  padding-left: 300px;
+  padding-left: 350px;
   box-sizing: border-box;
   width: 100%;
   min-height: 100%;
