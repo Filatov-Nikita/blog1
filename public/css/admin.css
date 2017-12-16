@@ -1,13 +1,13 @@
 .menu {
   padding-top: 35px;
-  padding-left: 32px;
+  padding-left: 18px;
   box-sizing: border-box;
   position: fixed;
-  width: 300px;
+  width: 260px;
   height: 100vh;
   background-image: url('../img/bg.jpg');
   background-size: cover;
-  overflow-x: hidden;
+  overflow-y: hidden;
   /* Let's get this party started */
   /* Track */
   /* Handle */
@@ -64,7 +64,7 @@
 }
 
 .menu .bookmark {
-  font: 20px roboto;
+  font: 16px roboto;
 }
 
 .menu .bookmark ul.innerMenu {
@@ -76,7 +76,7 @@
 }
 
 .menu .bookmark ul.innerMenu li a {
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .menu .bookmark ul.outMenu {
@@ -659,7 +659,7 @@ img {
 }
 
 .main .right_panel {
-  padding-left: 300px;
+  padding-left: 260px;
   box-sizing: border-box;
   width: 100%;
   min-height: 100%;
