@@ -663,19 +663,16 @@ img {
   box-sizing: border-box;
   width: 100%;
   min-height: 100%;
-  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .main .right_panel .welcome {
   text-align: center;
   font: 100 60px roboto;
-  color: #fff;
+  color: #5f5959;
   height: 100%;
-  padding-top: 250px;
+
   box-sizing: border-box;
-  background-image: url('../img/blog-667x5001.jpg');
-  background-size: cover;
-  position: relative;
 }
 
 .main .right_panel .header {
