@@ -1,8 +1,9 @@
 $(function () {
     $('.menuS').fnMenu();
-$('.left_panel .menu ul.master li.hover').on('click', function() {
-		var answer = $(this).find('.slave').stop(true).slideToggle();
-	});
+    $('.menu .bookmark ul.outMenu li a').on('click', function(e) {
+        e.preventDefault();
+        var answer = $(this).parent().find('.innerMenu').stop(true).slideToggle();
+    });
 	
 		var menu = $('.main .left_panel');
 	$(document).on('scroll', function() {
