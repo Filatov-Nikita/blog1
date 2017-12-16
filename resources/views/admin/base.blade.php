@@ -18,22 +18,22 @@
     <div class="main">
         <div class="menu">
             <div class="top">
-                <div class="logo">N</div>
+                <div class="logo"><div class="word">N</div></div>
                 <div class="name">Nikita522</div>
             </div>
             <div class="bookmark">
                 <ul class = "outMenu">
                     <li><a href="">Посты</a>
                         <ul class = "innerMenu">
-                            <li><a href="">Добавить</a></li>
-                            <li><a href="">Редактировать</a></li>
+                            <li><a href="{{url('/admin/post/create')}}">Добавить</a></li>
+                            <li><a href="{{url('/admin/post/edit')}}">Редактировать</a></li>
                             <li><a href="">Удалить</a></li>
                         </ul>
                     </li>
                     <li><a href="">Порфтолио</a>
                         <ul class = "innerMenu">
-                            <li><a href="">Добавить</a></li>
-                            <li><a href="">Редактировать</a></li>
+                            <li><a href="{{url('/admin/project/create')}}">Добавить</a></li>
+                            <li><a href="{{url('/admin/project/edit')}}">Редактировать</a></li>
                             <li><a href="">Удалить</a></li>
                         </ul></li>
                     <li><a href="">Пользователи</a></li>

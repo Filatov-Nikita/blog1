@@ -38,11 +38,16 @@
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background: #fff;
+  background: rgba(97, 97, 97, 0.5);
   text-align: center;
   box-sizing: border-box;
-  font: 300 36px roboto;
-  padding-top: 20px;
+  font: 400 36px roboto;
+  flex-shrink: 0;
+}
+
+.menu .logo .word {
+  transform: translateY(50%);
+  color: #fff;
 }
 
 .menu .name {
@@ -50,6 +55,8 @@
   font: 300 24px roboto;
   margin-left: 25px;
   align-self: center;
+  word-break: break-all;
+  word-wrap: break-word;
 }
 
 .menu .top {
@@ -69,11 +76,11 @@
 }
 
 .menu .bookmark ul.innerMenu li a {
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .menu .bookmark ul.outMenu {
-  margin-top: 100px;
+  margin-top: 80px;
   margin-left: -32px;
 }
 
