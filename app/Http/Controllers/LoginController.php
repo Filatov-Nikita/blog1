@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegistrationMail;
 use App\Models\User;
+use Illuminate\Support\Facades\Cache;
 
 class LoginController extends Controller {
 
@@ -66,6 +67,7 @@ class LoginController extends Controller {
 
     public function getLogout() {
         Auth::logout();
+        Cache::forget('userName');
         return redirect()->route('site.main.about');
     }
 
