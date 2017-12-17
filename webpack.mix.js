@@ -12,4 +12,12 @@ let mix = require('laravel-mix');
  */
 
 mix
-   .less('resources/assets/less/app.less', 'public/css');
+  .less('resources/assets/less/app.less', 'public/css');
+    mix.browserSync('localhost/blog1/public');
+
+
+
+// mix.styles([
+//     'public/css/app.css',
+//     'public/css/admin.css'
+// ], 'public/css/admin.css');

@@ -2,6 +2,7 @@
 @section('link')
     @parent
     <link href="{{url('css/admin.css')}}" rel="stylesheet">
+    <link href="{{url('css/app.css')}}" rel="stylesheet">
 @endsection
 
 @section('content')

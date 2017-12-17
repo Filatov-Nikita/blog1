@@ -1,3 +1,8 @@
-.margin {
-  margin-top: 100px;
+.main .right_panel .welcome {
+  padding-top: 250px;
+  height: 100%;
+  min-height: 100%;
+  color: #3c3c3c;
+  font-size: 80px;
+  line-height: 1.5;
 }
