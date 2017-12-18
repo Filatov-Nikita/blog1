@@ -56,9 +56,9 @@
   font: 300 24px roboto;
   margin-left: 25px;
   align-self: center;
-  word-break: break-all;
   word-wrap: break-word;
 }
+
 
 .menu .top {
   display: flex;

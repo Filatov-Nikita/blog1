@@ -1,3 +1,13 @@
+.top_line {
+  background: #4e4e4e;
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8);
+          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8);
+  /* Параметры тени */
+}
+.top_line .version {
+  font: 300 15px roboto;
+  color: #fff;
+}
 .main .right_panel .welcome {
   padding-top: 250px;
   height: 100%;

@@ -37,13 +37,13 @@ class ProjectsAdminController extends Controller
 
     public function projectCreate()
     {
-        $this->authorize('create');
+        $this->authorize('project_create');
         return view('admin.projectCreate');
     }
 
     public function projectCreateSend(RequestPostCreate $request, Uploader $uploader)
     {
-        $this->authorize('create', Article::class);
+        $this->authorize('create', Project::class);
         $this->files = ['logo', 'image'];
         foreach ($this->files as $file) {
             if ($uploader->validate($request, $file, $this->rules)) {
@@ -58,6 +58,7 @@ class ProjectsAdminController extends Controller
     }
     public function projectEditSend(RequestPostCreate $request, Uploader $uploader)
     {
+        $this->authorize('edit', Project::class);
         $ProjectModel = Project::find(session('post_id'));
         $ProjectModel->fill($request->all());
 
@@ -80,7 +81,7 @@ class ProjectsAdminController extends Controller
 
     public function projectsList()
     {
-        $this->authorize('edit');
+        $this->authorize('project_edit');
         $projects = Project::get();
         return view('admin.projectsList', ['list_projects' => $projects]);
     }

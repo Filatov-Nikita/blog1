@@ -15,7 +15,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Models\Article' => 'App\Policies\PostPolicy'
+        'App\Models\Article' => 'App\Policies\PostPolicy',
+        'App\Models\Project' => 'App\Policies\ProjectPolicy'
     ];
 
     /**
@@ -36,6 +37,22 @@ class AuthServiceProvider extends ServiceProvider
         });
         Gate::define('post_edit', function ($user) {
             $prive = $user->role->prives->where('name', 'editor_articles')->first();
+
+            if ($prive){
+                return true;
+            }
+            return false;
+        });
+        Gate::define('project_create', function ($user) {
+            $prive = $user->role->prives->where('name', 'creator_projects')->first();
+
+            if ($prive){
+                return true;
+            }
+            return false;
+        });
+        Gate::define('project_edit', function ($user) {
+            $prive = $user->role->prives->where('name', 'editor_projects')->first();
 
             if ($prive){
                 return true;
