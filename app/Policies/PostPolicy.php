@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Articles;
+use App\Models\Article;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PostPolicy
@@ -19,8 +19,17 @@ class PostPolicy
     {
         //
     }
-
-    public function create (User $user, Aricles $articles) {
-        return $user->can_create == 1;
+        public function create (User $user) {
+             if ($user->role->prives->where('name' , 'creator_articles')->first()) {
+                 return true;
+             }
+             return false;
     }
+    public function edit (User $user) {
+        if ($user->role->prives->where('name' , 'editor_articles')->first()) {
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -15,8 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
-        'App\Model\Article' => 'App\Policies\PostPolicy',
+        'App\Models\Article' => 'App\Policies\PostPolicy'
     ];
 
     /**
@@ -27,18 +26,21 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        Gate::define('confirmed_user', function ($user) {
-            return $user->registration_status == 1;
-        });
+        Gate::define('post_create', function ($user) {
+            $prive = $user->role->prives->where('name', 'creator_articles')->first();
 
-        Gate::define('create', function ($user) {
-            return $user->can_create == 1;
+            if ($prive){
+                return true;
+            }
+            return false;
         });
-        Gate::define('edit', function ($user) {
-            return $user->can_edit == 1;
-        });
-        Gate::define('delete', function ($user) {
-            return $user->can_delete == 1;
+        Gate::define('post_edit', function ($user) {
+            $prive = $user->role->prives->where('name', 'editor_articles')->first();
+
+            if ($prive){
+                return true;
+            }
+            return false;
         });
     }
 }

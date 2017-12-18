@@ -26,9 +26,15 @@
                 <ul class = "outMenu">
                     <li><a href="">Посты</a>
                         <ul class = "innerMenu">
+                            @can('create', \App\Models\Article::class)
                             <li><a href="{{url('/admin/post/create')}}">Добавить</a></li>
+                            @endcan
+                                @can('edit', \App\Models\Article::class)
                             <li><a href="{{url('/admin/post/edit')}}">Редактировать</a></li>
+                                @endcan
+                                @can('delete', \App\Models\Article::class)
                             <li><a href="">Удалить</a></li>
+                                @endcan
                         </ul>
                     </li>
                     <li><a href="">Порфтолио</a>

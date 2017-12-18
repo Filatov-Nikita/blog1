@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
@@ -40,13 +41,13 @@ class ArticlesAdminController extends Controller
 
     public function postCreate()
     {
-        $this->authorize('create');
+       $this->authorize('post_create');
         return view('admin.postCreate');
     }
 
     public function postEdit()
     {
-        $this->authorize('edit');
+        $this->authorize('post_edit');
         $all_articles = Article::get();
         return view('admin.postEdit', ['all_articles' => $all_articles]);
 
@@ -77,12 +78,12 @@ class ArticlesAdminController extends Controller
         $ArticleModel = Article::create($request->all());
         $ArticleModel->image = $uploadedPath;
         $ArticleModel->save();
-        return redirect()->route('admin.index')->with('success', 'Добавление поста выполнено успешно');
+        return redirect()->route('admin.createPost')->with('successPostCreate', 'Добавление поста выполнено успешно');
 
     }
     public function postEditSend(RequestPostCreate $request, Uploader $uploader)
     {
-
+        $this->authorize('edit', Article::class);
         $ArticleModel = Article::find(session('post_id'));
         $ArticleModel->fill($request->all());
             if ($uploader->validate($request, 'file', $this->rules)) {
