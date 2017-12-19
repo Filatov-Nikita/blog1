@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="shortcut icon" href="{{url('favicon.ico')}}" type="image/x-icon">
         <title>Филатов Никита - {{$title}}</title>
         @section('link')
             <link href="{{url('css/style.css')}}" rel="stylesheet">
