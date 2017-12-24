@@ -88,7 +88,7 @@ class ProjectsAdminController extends Controller
 
     public function projectById($id)
     {
-        $this->authorize('edit');
+        $this->authorize('project_edit');
         session(['post_id' => $id]);
         $project = Project::find($id);
         return view('admin.projectEdit', ['project' => $project]);

@@ -55,7 +55,7 @@ class ArticlesAdminController extends Controller
 
     public function postEditById($id)
     {
-        $this->authorize('edit');
+        $this->authorize('post_edit');
         session(['post_id' => $id]);
         $article = Article::find($id);
         return view('admin.postEditById', ['article' => $article]);

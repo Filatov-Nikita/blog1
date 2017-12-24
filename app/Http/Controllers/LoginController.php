@@ -27,7 +27,7 @@ class LoginController extends Controller {
                     'registration_status' => 1
         ], true);
         if ($authResult) {
-            return back();
+            return redirect()->route('site.main.about');
         } else {
             return redirect()
                             ->route('site.main.login')
@@ -67,7 +67,7 @@ class LoginController extends Controller {
 
     public function getLogout() {
         Auth::logout();
-        Cache::forget('userName');
+       // Cache::forget('userName');
         return redirect()->route('site.main.about');
     }
 

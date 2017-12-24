@@ -23,8 +23,8 @@
     <div class="main">
         <div class="menu">
             <div class="top">
-                <div class="logo"><div class="word">{{mb_substr(ucfirst($userName), 0, 1)}}</div></div>
-                <div class="name">{{$userName}}</div>
+                <div class="logo"><div class="word">{{mb_substr(ucfirst(Auth::user()->name), 0, 1)}}</div></div>
+                <div class="name">{{Auth::user()->name}}</div>
             </div>
             <div class="bookmark">
                 <ul class = "outMenu">

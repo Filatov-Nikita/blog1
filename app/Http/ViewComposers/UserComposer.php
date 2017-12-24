@@ -23,13 +23,13 @@ class UserComposer
      */
     public function __construct()
     {
-       $this->userName =  Cache::remember('userName', 100, function () {
-           if(Auth::check()) {
-               return Auth::user()->name;
-           }
-           return null;
-
-        });
+//       $this->userName =  Cache::remember('userName', 100, function () {
+//           if(Auth::check()) {
+//               return Auth::user()->name;
+//           }
+//           return null;
+//
+//        });
 
     }
 
