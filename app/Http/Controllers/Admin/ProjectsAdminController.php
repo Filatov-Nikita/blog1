@@ -10,12 +10,12 @@ use App\Classes\Uploader;
 class ProjectsAdminController extends Controller
 {
     protected  $files = ['logo', 'image'];
+    protected $rules = [];
 
     public function __construct()
     {
         $this->rules = [
             'maxSize' => 10 * 1024 * 1024,
-            'minSize' => 10 * 1024,
             'allowedExt' => [
                 'jpeg',
                 'jpg',
@@ -50,6 +50,7 @@ class ProjectsAdminController extends Controller
                 $uploadedPath[$file] = $uploader->upload();
             }
         }
+
         $ProjectModel = Project::create($request->all());
         $ProjectModel->image = $uploadedPath['image'];
         $ProjectModel->logo = $uploadedPath['logo'];
