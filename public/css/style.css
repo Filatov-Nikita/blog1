@@ -172,6 +172,9 @@
   overflow: hidden;
   margin-bottom: 15px;
 }
+.one_column .main_img img {
+  width: 100%;
+}
 
 .one_column .title {
   font: 32px lora;
