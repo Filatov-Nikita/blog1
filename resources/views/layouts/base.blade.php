@@ -2,6 +2,10 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="author" content="Antonov Nikita">
+        <meta name="description" content="На моем персональном блоге, можно ознакомиться с моими проектами, также почитать мои статьи и получить обратную связь если у вас возникли какие-либо вопросы">
+        <meta name="keywords" content="Веб разработка, Филатов Никита, разработка сайтов, блог Филатова Никиты, блог">
+        <meta name="robots" content="index, follow">
         <link rel="shortcut icon" href="{{url('favicon.ico')}}" type="image/x-icon">
         <title>Филатов Никита - {{$title}}</title>
         @section('link')
