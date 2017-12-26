@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+		<!--	created with www.mysitemapgenerator.com	-->
+		<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+	<loc>https://www.nikita-filatov.ru/</loc>
+	<lastmod>2017-12-26T18:45:05+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://www.nikita-filatov.ru/login</loc>
+	<lastmod>2017-12-26T18:45:06+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://www.nikita-filatov.ru/about</loc>
+	<lastmod>2017-12-26T18:45:07+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://www.nikita-filatov.ru/portfolio</loc>
+	<lastmod>2017-12-26T18:45:07+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://www.nikita-filatov.ru/articles</loc>
+	<lastmod>2017-12-26T18:45:08+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://www.nikita-filatov.ru/feedback</loc>
+	<lastmod>2017-12-26T18:45:09+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://www.nikita-filatov.ru/portfolio/1</loc>
+	<lastmod>2017-12-26T18:45:09+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://www.nikita-filatov.ru/portfolio/9</loc>
+	<lastmod>2017-12-26T18:45:10+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://www.nikita-filatov.ru/articles/4</loc>
+	<lastmod>2017-12-26T18:45:11+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+</urlset>
