@@ -1,3 +1,4 @@
+
 .portfolio {
   padding: 20px 0;
   color: #fff;
@@ -138,10 +139,41 @@
   color: #fff;
 }
 
+.one_port {
+  padding: 15px 0;
+  background: #787488;
+  text-align: center;
+  color: #fff;
+  font: 24px lora;
+}
+
+.content {
+  text-align: center;
+  padding: 20px;
+  color: #000;
+  font: 22px roboto;
+  line-height: 1.5;
+}
+
+.description_port {
+  padding: 10px;
+  background: #dc6655;
+  font: 100 22px 'Open sans';
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.text {
+  margin-bottom: 15px;
+}
+
 .one_column .main_img {
   max-height: 350px;
   overflow: hidden;
   margin-bottom: 15px;
+}
+.one_column .main_img img {
+  width: 100%;
 }
 
 .one_column .title {
@@ -307,6 +339,56 @@
   color: #fff;
   text-decoration: none;
   font: 80px 'marck script';
+}
+
+.feedback .wrapper .form {
+  padding-top: 15px;
+}
+
+.feedback .wrapper .form form {
+  font: 20px roboto;
+}
+
+.feedback .wrapper .form form input {
+  width: 100%;
+  display: block;
+  height: 40px;
+  border: 1px solid transparent;
+  background: #c1c1c1;
+  outline: none;
+  text-indent: 12px;
+}
+
+.feedback .wrapper .form form label {
+  margin-top: 15px;
+  display: block;
+  color: #4a4949;
+}
+
+.feedback .wrapper .form form textarea {
+  display: block;
+  resize: none;
+  width: 100%;
+  background: #c1c1c1;
+  margin-top: 15px;
+  height: 300px;
+  margin-bottom: 15px;
+  outline: none;
+  text-indent: 12px;
+}
+
+.feedback .wrapper .form form .btn {
+  background: #ca6464;
+  color: #fff;
+  max-width: 500px;
+  margin: 0 auto 15px auto;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.feedback .wrapper .form form .btn:hover {
+  background: #8a4141;
+  cursor: pointer;
 }
 
 body,
@@ -963,3 +1045,5 @@ footer .copyright {
   }
 }
 /*# sourceMappingURL=style.css.map */
+
+

@@ -9,7 +9,8 @@
                 <label for="name">Ваше имя</label><input type="text" name = "name">
                 <label for="email">Ваше email</label><input type="text" name = "email">
                 <textarea name="text" id="" placeholder="Текст сообщения"></textarea>
-                <input type="submit" class = "btn" name = "btn_feedback">
+                <input type="submit" class = "btn" name = "btn_feedback" value="Отправить">
+                <div class="btn show"><img class = "rolling" src="{{asset('img/rolling.svg')}}" alt=""></div>
             </form>
         </div>
     </div>
@@ -28,6 +29,18 @@
     padding: 10px 20px;
     display: none;
 }
+.rolling {
+    width: 5%;
+}
+.feedback .wrapper .form form .btn {
+    text-align: center;
+    padding: 5px;
+}
+    .show {
+       box-sizing: border-box;
+        display: none;
+        background: #8a4141 !important;
+    }
 </style>
 <script>
     $(function(){
@@ -38,13 +51,15 @@
                 return;
             }
             that.click = true;
-            $(this).css('background', '#351c1c').val('Подождите');
+            $(this).hide();
+            $('.show').show();
             var form = $(this).parent('.form form');
             $.post('{{url('/ajax/feedback')}}',
                 form.serialize(),
                 function(data){
                 if(data.res){
-                    $('.form .btn').css('background', '').val('Отправить');
+                    $('.form .btn').show();
+                    $('.form .show').hide();
                     $('.message').fadeIn(800);
                     setTimeout(function () {
                         $('.message').fadeOut(800);

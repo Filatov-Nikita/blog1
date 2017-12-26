@@ -16,7 +16,6 @@ mix
     mix.browserSync('localhost/blog1/public');
 
 
-
 // mix.styles([
 //     'public/css/app.css',
 //     'public/css/admin.css'
