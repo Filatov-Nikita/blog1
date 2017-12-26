@@ -1,3 +1,4 @@
+
 <div class="portfolio">
     <p>Написать мне</p>
 </div>
@@ -10,7 +11,7 @@
                 <label for="email">Ваше email</label><input type="text" name = "email">
                 <textarea name="text" id="" placeholder="Текст сообщения"></textarea>
                 <input type="submit" class = "btn" name = "btn_feedback" value="Отправить">
-                <div class="btn show"><img class = "rolling" src="{{asset('img/rolling.svg')}}" alt=""></div>
+                <div class="btn show"><img class = "rolling" src="{{asset('img/Rolling.svg')}}" alt=""></div>
             </form>
         </div>
     </div>

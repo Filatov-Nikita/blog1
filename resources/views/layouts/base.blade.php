@@ -6,7 +6,6 @@
         <meta name="description" content="На моем персональном блоге, можно ознакомиться с моими проектами, также почитать мои статьи и получить обратную связь если у вас возникли какие-либо вопросы">
         <meta name="keywords" content="Веб разработка, Филатов Никита, разработка сайтов, блог Филатова Никиты, блог">
         <meta name="robots" content="index, follow">
-        <meta name="yandex-verification" content="d22fc8b3b2418248" />
         <link rel="shortcut icon" href="{{url('favicon.ico')}}" type="image/x-icon">
         <title>Филатов Никита - {{$title}}</title>
         @section('link')
