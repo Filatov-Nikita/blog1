@@ -1,8 +1,7 @@
 User-agent: *
 
 Allow: /
-Disallow:
- /admin/
+Disallow:/admin/
 Sitemap: http://nikita-filatov.ru/sitemap.xml
 
 Host: www.nikita-filatov.ru
