@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\resetPasswordMail;
 use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use App\Http\Requests\RequestRegistration;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegistrationMail;
 use App\Models\User;
@@ -70,5 +73,36 @@ class LoginController extends Controller {
        // Cache::forget('userName');
         return redirect()->route('site.main.about');
     }
-
+    public function resetPassword() {
+        return view('layouts.primary', ['page' => 'auth.resetPassword']);
+    }
+    public function updatePassword() {
+       $db_token = DB::table('password_resets')->where('token', Input::get('token', null))->where('email', Input::get('email', null))->get();
+        if($db_token->isEmpty()) {
+            abort(403);
+        }
+        return view('layouts.primary', ['page' => 'auth.updatePassword']);
+    }
+    public function postResetPassword(Request $request) {
+        $this->validate($request, [
+            '*' => 'required',
+            'email' => 'email|exists:users'
+        ]);
+        $token = Hash::make($request->input('email'));
+        DB::table('password_resets')->insert([
+            'email' => $request->input('email'),
+            'token' => $token,
+            'created_at' => Carbon::createFromTimestamp(time())
+                ->format('Y-m-d H:i:s'),
+        ]);
+        Mail::to($request->input('email'))
+            ->send(
+                new resetPasswordMail([
+                    'email' => $request->input('email'),
+                    'token' => $token
+                    ])
+            );
+        return redirect()->route('site.main.about');
+    }
 }
+
