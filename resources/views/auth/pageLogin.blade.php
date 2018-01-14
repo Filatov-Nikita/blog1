@@ -4,12 +4,11 @@
 <div class="auth_page">
     <div class="container">
         @section('login')
-        @include('auth.login')
-        @show
-        
-        @section('registration')
-        @include('auth.registration')
+            @include('auth.login')
         @show
 
+        @section('registration')
+            @include('auth.registration')
+        @show
     </div>
 </div>
