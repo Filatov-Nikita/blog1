@@ -9,6 +9,7 @@ use Illuminate\Contracts\Auth\CanResetPassword;
 class User extends Authenticatable
 {
     use Notifiable;
+    use \Illuminate\Auth\Passwords\CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
