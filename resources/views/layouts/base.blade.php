@@ -34,7 +34,6 @@
        @yield('header')   
         @yield('content', 'I`m content!')
          @yield('footer', 'I`m content!')
-
         <script src="{{url('js/fnmenu.jquery.js')}}"></script>
         <script src="{{url('js/scripts.js')}}"></script>
         <script src="{{ asset('/js/ckeditor/ckeditor.js') }}"
