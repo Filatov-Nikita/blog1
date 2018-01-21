@@ -21,5 +21,8 @@
     "lodash": "^4.17.4",
     "smart-grid": "^2.0.1",
     "vue": "^2.5.7"
+  },
+  "dependencies": {
+    "vuex": "^3.0.1"
   }
 }

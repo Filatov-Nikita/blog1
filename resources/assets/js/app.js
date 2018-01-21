@@ -8,6 +8,14 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import Axios from 'axios';
+Vue.prototype.$http = Axios.create({
+    baseURL: 'http://js.dmitrylavrik.ru/api/',
+    crossDomain:true,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,7 +24,8 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
-
+import {store} from './store';
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    store
 });
