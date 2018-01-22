@@ -18,7 +18,7 @@ class FeedbackMail extends Mailable
      */
 
     protected $input;
-
+protected  $shall;
     public function __construct($input)
     {
         $this->input = $input;

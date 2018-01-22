@@ -8,8 +8,11 @@
                     <div class="panel-body">
                         I'm an example component!
                     </div>
-                    <input type="file" multiple @change="onChange">
+                    <input type="file" multiple @change="onChange" ref="input">
                     <button @click="upload">submit</button>
+                    <div class="bar">
+                        <div class="progress" :style="progressWidth"> {{percentCompleted}}</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -20,33 +23,50 @@
     export default {
         data() {
             return {
-                attachment: null,
-                form: new FormData
+                attachment: [],
+                percentCompleted: ''
             }
         },
         computed: {
-
+                progressWidth(){
+					return {
+						width: this.percentCompleted + '%'
+					}
+				}
         },
         methods: {
             onChange(e) {
-                let selected = e.target.files[0];
-                this.attachment = selected;
+                let selected = e.target.files;
+                for(let i = 0; i < selected.length; i++) {
+                    this.attachment.push(selected[i]);
+                }
+                console.log(this.attachment)
             },
             upload() {
-                this.form.append('pic', this.attachment);
+                let form = new FormData;
+                for(let i = 0; i < this.attachment.length; i++) {
+                    form.append('pics[]', this.attachment[i]);
+                }
+                console.log(form);
                 const config = {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
+                    headers: {'Content-Type': 'multipart/form-data'},
+                      onUploadProgress: progressEvent => {
+                      this.percentCompleted = Math.floor((progressEvent.loaded * 100) / progressEvent.total);
+                     }
                 };
-                axios.post('/blog1/public/testupload', this.form, config)
-                    .then(response=>{
 
-                    }).catch(response=> {
-
-                })
-                ;
-            }
+                
+                axios.post('/blog1/public/testupload', form, config)
+                    .then((response)=>{
+                        this.attachment = [];
+                        form.delete('pics');
+                        this.$refs.input.value = '';
+                        return response;
+                    })
+                    .catch(response=> {
+                       console.log(this);
+                    });
+            },
         }
     }
 </script>
@@ -93,5 +113,18 @@
         height: 100%;
         -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.5);
     }
+.bar {
+    text-align: center;
+    color:dimgray;
+    max-width: 300px;
+    border-radius: 12px;
+    margin-top:15px;
+    overflow: hidden;
 
+}
+.progress {
+    width: 0%;
+    height: 15px;
+    background: #f4645f;
+}
 </style>

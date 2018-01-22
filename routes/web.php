@@ -47,8 +47,9 @@ Route::get('/vue', function () {
     return view('pages.test');
 });
 Route::post('/testupload', function (Request $request) {
-    $files = $request->pic;
-$files->store('ava');
-
+    $files = $request->pics;
+    foreach ($files as $file) {
+        $file->store('ava');
+    }
     return response(['status' => 'success'], 200);
 });

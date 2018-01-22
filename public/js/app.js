@@ -30226,7 +30226,7 @@ exports = module.exports = __webpack_require__(39)(undefined);
 
 
 // module
-exports.push([module.i, "\n.fade-enter[data-v-b6ebd97a]{\n  -webkit-transform: translateX(-500px);\n          transform: translateX(-500px);\n}\n.fade-enter-active[data-v-b6ebd97a]{\n    -webkit-animation: slideIn-data-v-b6ebd97a 0.3s;\n            animation: slideIn-data-v-b6ebd97a 0.3s;\n}\n.fade-enter-to[data-v-b6ebd97a]{\n}\n.fade-leave[data-v-b6ebd97a]{\n}\n.fade-leave-active[data-v-b6ebd97a]{\n    -webkit-animation: slideOut-data-v-b6ebd97a 0.3s;\n            animation: slideOut-data-v-b6ebd97a 0.3s;\n}\n.fade-leave-to[data-v-b6ebd97a]{\n}\n@-webkit-keyframes slideIn-data-v-b6ebd97a{\nfrom{-webkit-transform: translateX(-500px);transform: translateX(-500px);\n}\nto{-webkit-transform: translateX(0px);transform: translateX(0px);\n}\n}\n@keyframes slideIn-data-v-b6ebd97a{\nfrom{-webkit-transform: translateX(-500px);transform: translateX(-500px);\n}\nto{-webkit-transform: translateX(0px);transform: translateX(0px);\n}\n}\n@-webkit-keyframes slideOut-data-v-b6ebd97a{\nfrom{-webkit-transform: translateX(0px);transform: translateX(0px);\n}\nto{-webkit-transform: translateX(-500px);transform: translateX(-500px);\n}\n}\n@keyframes slideOut-data-v-b6ebd97a{\nfrom{-webkit-transform: translateX(0px);transform: translateX(0px);\n}\nto{-webkit-transform: translateX(-500px);transform: translateX(-500px);\n}\n}\n.menu[data-v-b6ebd97a] {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 150px;\n    background: #DF314D;\n    height: 100%;\n    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.5);\n}\n\n", ""]);
+exports.push([module.i, "\n.fade-enter[data-v-b6ebd97a]{\n      -webkit-transform: translateX(-500px);\n              transform: translateX(-500px);\n}\n.fade-enter-active[data-v-b6ebd97a]{\n        -webkit-animation: slideIn-data-v-b6ebd97a 0.3s;\n                animation: slideIn-data-v-b6ebd97a 0.3s;\n}\n.fade-enter-to[data-v-b6ebd97a]{\n}\n.fade-leave[data-v-b6ebd97a]{\n}\n.fade-leave-active[data-v-b6ebd97a]{\n        -webkit-animation: slideOut-data-v-b6ebd97a 0.3s;\n                animation: slideOut-data-v-b6ebd97a 0.3s;\n}\n.fade-leave-to[data-v-b6ebd97a]{\n}\n@-webkit-keyframes slideIn-data-v-b6ebd97a{\nfrom{-webkit-transform: translateX(-500px);transform: translateX(-500px);\n}\nto{-webkit-transform: translateX(0px);transform: translateX(0px);\n}\n}\n@keyframes slideIn-data-v-b6ebd97a{\nfrom{-webkit-transform: translateX(-500px);transform: translateX(-500px);\n}\nto{-webkit-transform: translateX(0px);transform: translateX(0px);\n}\n}\n@-webkit-keyframes slideOut-data-v-b6ebd97a{\nfrom{-webkit-transform: translateX(0px);transform: translateX(0px);\n}\nto{-webkit-transform: translateX(-500px);transform: translateX(-500px);\n}\n}\n@keyframes slideOut-data-v-b6ebd97a{\nfrom{-webkit-transform: translateX(0px);transform: translateX(0px);\n}\nto{-webkit-transform: translateX(-500px);transform: translateX(-500px);\n}\n}\n.menu[data-v-b6ebd97a] {\n        position: fixed;\n        top: 0;\n        left: 0;\n        width: 150px;\n        background: #DF314D;\n        height: 100%;\n        -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.5);\n}\n.bar[data-v-b6ebd97a] {\n    text-align: center;\n    color:dimgray;\n    max-width: 300px;\n    border-radius: 12px;\n    margin-top:15px;\n    overflow: hidden;\n}\n.progress[data-v-b6ebd97a] {\n    width: 0%;\n    height: 15px;\n    background: #f4645f;\n}\n", ""]);
 
 // exports
 
@@ -30700,29 +30700,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            attachment: null,
-            form: new FormData()
+            attachment: [],
+            percentCompleted: ''
         };
     },
 
-    computed: {},
+    computed: {
+        progressWidth: function progressWidth() {
+            return {
+                width: this.percentCompleted + '%'
+            };
+        }
+    },
     methods: {
         onChange: function onChange(e) {
-            var selected = e.target.files[0];
-            this.attachment = selected;
+            var selected = e.target.files;
+            for (var i = 0; i < selected.length; i++) {
+                this.attachment.push(selected[i]);
+            }
+            console.log(this.attachment);
         },
         upload: function upload() {
-            this.form.append('pic', this.attachment);
+            var _this = this;
+
+            var form = new FormData();
+            for (var i = 0; i < this.attachment.length; i++) {
+                form.append('pics[]', this.attachment[i]);
+            }
+            console.log(form);
             var config = {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
+                headers: { 'Content-Type': 'multipart/form-data' },
+                onUploadProgress: function onUploadProgress(progressEvent) {
+                    _this.percentCompleted = Math.floor(progressEvent.loaded * 100 / progressEvent.total);
                 }
             };
-            axios.post('/blog1/public/testupload', this.form, config).then(function (response) {}).catch(function (response) {});
+
+            axios.post('/blog1/public/testupload', form, config).then(function (response) {
+                _this.attachment = [];
+                form.delete('pics');
+                _this.$refs.input.value = '';
+                return response;
+            }).catch(function (response) {
+                console.log(_this);
+            });
         }
     }
 });
@@ -30750,11 +30777,18 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("input", {
+            ref: "input",
             attrs: { type: "file", multiple: "" },
             on: { change: _vm.onChange }
           }),
           _vm._v(" "),
-          _c("button", { on: { click: _vm.upload } }, [_vm._v("submit")])
+          _c("button", { on: { click: _vm.upload } }, [_vm._v("submit")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "bar" }, [
+            _c("div", { staticClass: "progress", style: _vm.progressWidth }, [
+              _vm._v(" " + _vm._s(_vm.percentCompleted))
+            ])
+          ])
         ])
       ])
     ])
