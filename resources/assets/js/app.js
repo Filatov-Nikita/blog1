@@ -8,13 +8,10 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+
 import Axios from 'axios';
 Vue.prototype.$http = Axios.create({
     baseURL: 'http://js.dmitrylavrik.ru/api/',
-    crossDomain:true,
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    }
 });
 
 /**

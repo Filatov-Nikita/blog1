@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,4 +45,10 @@ Route::get('/confirmed/{hash}', 'LoginController@confirmed_user')->name('confirm
 
 Route::get('/vue', function () {
     return view('pages.test');
+});
+Route::post('/testupload', function (Request $request) {
+    $files = $request->pic;
+$files->store('ava');
+
+    return response(['status' => 'success'], 200);
 });

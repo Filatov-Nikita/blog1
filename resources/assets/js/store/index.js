@@ -5,11 +5,12 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        vuex: 151
+
     },
     mutations: {
 
-    }, actions: {
-        get() {}
+    },
+    actions: {
+
     }
 });
