@@ -35,4 +35,4 @@ const settings = {
     oldSizeStyle: false
 
 };
-smartgrid('./resourses/assets/less', settings);
+smartgrid('./resources/assets/less', settings);

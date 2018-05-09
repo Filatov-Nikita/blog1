@@ -10,6 +10,7 @@
         <title>Филатов Никита - {{$title}}</title>
         @section('link')
             <link href="{{url('css/style.css')}}" rel="stylesheet">
+            <link href="{{url('css/app.css')}}" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,900&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
@@ -18,7 +19,7 @@
             <link href="https://fonts.googleapis.com/css?family=Marck+Script&amp;subset=cyrillic" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=Pacifico&amp;subset=latin-ext" rel="stylesheet">
             <script src="{{url('js/jquery-3.2.0.min.js')}}"></script>
-            <meta name="viewport" content="width=device-width, initial-scale=0.8" >
+            <meta name="viewport" content="width=device-width, initial-scale=1" >
         @show
     </head>
     <body>
@@ -39,14 +40,14 @@
         <script src="{{ asset('/js/ckeditor/ckeditor.js') }}"
                 type="text/javascript" charset="utf-8" ></script>
         <script>
-            var editor = CKEDITOR.replace( 'content',
-                {
-                    filebrowserImageBrowseUrl: '{{url('/laravel-filemanager?type=Images')}}',
-                    filebrowserImageUploadUrl: '{{url('/laravel-filemanager/upload?type=Images&_token=')}}',
-                    filebrowserBrowseUrl: '{{url('/laravel-filemanager?type=Files')}}',
-                    filebrowserUploadUrl: '{{url('/laravel-filemanager/upload?type=Files&_token=')}}'
-
-            } );
+            var editor = CKEDITOR.replace(
+            'content',
+             {  filebrowserImageBrowseUrl: '{{url('/laravel-filemanager?type=Images')}}',
+                filebrowserImageUploadUrl: '{{url('/laravel-filemanager/upload?type=Images&_token=')}}',
+                filebrowserBrowseUrl: '{{url('/laravel-filemanager?type=Files')}}',
+                filebrowserUploadUrl: "{{url('/laravel-filemanager/upload?type=Files&_token=')}}" 
+            } 
+        );
         </script>
     </body>
 </html>
