@@ -43,10 +43,14 @@
                                   <li><a href="{{url('/admin/project/delete')}}">Удалить</a></li>
                                 @endcan
                         </ul></li>
-                    <li><a href="">Пользователи</a></li>
+                        <li><a href="">Пользователи</a>
+                            <ul class = "innerMenu">
+                                @can('user_role_change')
+                                <li><a href="{{url('/admin/users/rolechange')}}">Назначить роль</a></li>
+                               @endcan
+                            </ul>
+                        </li>
                     <li><a href="">Меню</a></li>
-                    {{-- <li><a href="">Страницы</a></li>
-                    <li><a href="">Настройки</a></li> --}}
                 </ul>
             </div>
         </div>

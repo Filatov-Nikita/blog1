@@ -43,13 +43,13 @@ Route::post('/upload', 'TestController@testPost');
 Route::get('/mail', 'TestController@mail');
 Route::get('/confirmed/{hash}', 'LoginController@confirmed_user')->name('confirmed');
 
-Route::get('/vue', function () {
-    return view('pages.test');
-});
-Route::post('/testupload', function (Request $request) {
-    $files = $request->pics;
-    foreach ($files as $file) {
-        $file->store('ava');
-    }
-    return response(['status' => 'success'], 200);
-});
+// Route::get('/vue', function () {
+//     return view('pages.test');
+// });
+// Route::post('/testupload', function (Request $request) {
+//     $files = $request->pics;
+//     foreach ($files as $file) {
+//         $file->store('ava');
+//     }
+//     return response(['status' => 'success'], 200);
+// });

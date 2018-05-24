@@ -15,3 +15,6 @@ Route::get('/project/edit/{id}', 'ProjectsAdminController@projectById')->name('a
 Route::post('/project/edit/{id}', 'ProjectsAdminController@projectEditSend');
 Route::get('/project/delete', 'ProjectsAdminController@projectDelete')->name('admin.projectDelete');
 Route::get('/project/delete/{id}', 'ProjectsAdminController@projectDeleteById')->name('admin.projectDeleteById');
+Route::get('/users/rolechange', 'UsersAdminController@listPage')->name('admin.usersList');
+Route::get('/users/rolechange/{id}', 'UsersAdminController@changeRole')->name('admin.changeRoleUser');
+Route::post('/users/rolechange/{id}', 'UsersAdminController@changeRolePost');

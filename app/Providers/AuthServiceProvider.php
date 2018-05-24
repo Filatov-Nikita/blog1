@@ -75,5 +75,13 @@ class AuthServiceProvider extends ServiceProvider
             }
             return false;
         });
+        Gate::define('user_role_change', function ($user) {
+            $prive = $user->role->prives->where('name', 'user_admin')->first();
+
+            if ($prive){
+                return true;
+            }
+            return false;
+        });
     }
 }
