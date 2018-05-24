@@ -6,16 +6,6 @@
 @endsection
 
 @section('content')
-    {{--<div class="top_line">--}}
-        {{--<div class="menu">--}}
-            {{--<ul>--}}
-                {{--<li><a href="{{route('site.main.about')}}">Главная</a></li>--}}
-                {{--<li><a href="">Посты</a></li>--}}
-                {{--<li><a href="">Портфолио</a></li>--}}
-            {{--</ul>--}}
-        {{--</div>--}}
-        {{--<div class="version_prog">Админ панель Филатова Никиты версия 1.0</div>--}}
-    {{--</div>--}}
     <div class="top_line">
         <div></div>
         <div class="version">Админ панель Филатова Никиты version 1.0</div>
@@ -37,7 +27,7 @@
                             <li><a href="{{url('/admin/post/edit')}}">Редактировать</a></li>
                                 @endcan
                                 @can('post_delete')
-                            <li><a href="">Удалить</a></li>
+                                     <li><a href="{{url('/admin/post/delete')}}">Удалить</a></li>
                                 @endcan
                         </ul>
                     </li>
@@ -50,8 +40,8 @@
                             <li><a href="{{url('/admin/project/edit')}}">Редактировать</a></li>
                                 @endcan
                                 @can('project_delete')
-                            <li><a href="">Удалить</a></li>
-                                    @endcan
+                                  <li><a href="{{url('/admin/project/delete')}}">Удалить</a></li>
+                                @endcan
                         </ul></li>
                     <li><a href="">Пользователи</a></li>
                     <li><a href="">Меню</a></li>

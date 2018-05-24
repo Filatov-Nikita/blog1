@@ -49,7 +49,12 @@ class ArticlesAdminController extends Controller
     {
         $this->authorize('post_edit');
         $all_articles = Article::get();
-        return view('admin.postEdit', ['all_articles' => $all_articles]);
+        return view('admin.pageList', [
+            'all_articles' => $all_articles, 
+            'namePage' => 'Редактирование статьи',
+            'listName' => 'admin.listPosts',
+            'routeName' => 'admin.getPostById'
+        ]);
 
     }
 
@@ -59,12 +64,6 @@ class ArticlesAdminController extends Controller
         session(['post_id' => $id]);
         $article = Article::find($id);
         return view('admin.postEditById', ['article' => $article]);
-
-    }
-
-    public function postDelete()
-    {
-
 
     }
 
@@ -94,4 +93,20 @@ class ArticlesAdminController extends Controller
         return redirect()->route('admin.index')->with('success', 'Редактирование поста выполнено успешно');
 
     }
+    public function postDeletePage() {
+        $this->authorize('post_delete');
+        $all_articles = Article::get();
+        return view('admin.pageList', 
+        [
+            'all_articles' => $all_articles,
+            'listName' => 'admin.listPosts',
+            'namePage' => 'Удаление статьи',
+            'routeName' => 'admin.postDeleteById'
+        ]);
+    }
+    public function postDelete($id) {
+        $article = Article::find($id)->delete();
+        return redirect()->route('admin.deletePostPage');
+    }
+
 }

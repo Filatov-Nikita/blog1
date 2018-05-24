@@ -73,18 +73,16 @@ class ProjectsAdminController extends Controller
 
     }
 
-    public function projectDelete()
-    {
-        $this->authorize('delete');
-        $projects = Project::get();
-        return view('admin.projectDelete', ['all_projects' => $projects]);
-    }
 
     public function projectsList()
     {
         $this->authorize('project_edit');
         $projects = Project::get();
-        return view('admin.projectsList', ['list_projects' => $projects]);
+        return view('admin.pageList', ['list_projects' => $projects,
+        'namePage' => 'Редактирование проекта',
+        'routeName' => 'admin.editProject',
+        'listName' => 'admin.listProjects'
+        ]);
     }
 
     public function projectById($id)
@@ -93,5 +91,21 @@ class ProjectsAdminController extends Controller
         session(['post_id' => $id]);
         $project = Project::find($id);
         return view('admin.projectEdit', ['project' => $project]);
+    }
+    public function projectDelete() {
+        $this->authorize('project_delete');
+        $list_projects = Project::get();
+        return view('admin.pageList', 
+        [
+            'list_projects' => $list_projects,
+            'routeName' => 'admin.projectDeleteById',
+            'namePage' => 'Удаление проекта',
+            'listName' => 'admin.listProjects'
+        ]);
+    }
+    public function projectDeleteById($id) {
+        $this->authorize('project_delete');
+        $projects = Project::find($id)->delete();
+        return redirect()->route('admin.projectDelete');
     }
 }

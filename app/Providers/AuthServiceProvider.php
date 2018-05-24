@@ -43,6 +43,14 @@ class AuthServiceProvider extends ServiceProvider
             }
             return false;
         });
+        Gate::define('post_delete', function ($user) {
+            $prive = $user->role->prives->where('name', 'deletor_articles')->first();
+
+            if ($prive){
+                return true;
+            }
+            return false;
+        });
         Gate::define('project_create', function ($user) {
             $prive = $user->role->prives->where('name', 'creator_projects')->first();
 
@@ -53,6 +61,14 @@ class AuthServiceProvider extends ServiceProvider
         });
         Gate::define('project_edit', function ($user) {
             $prive = $user->role->prives->where('name', 'editor_projects')->first();
+
+            if ($prive){
+                return true;
+            }
+            return false;
+        });
+        Gate::define('project_delete', function ($user) {
+            $prive = $user->role->prives->where('name', 'deletor_projects')->first();
 
             if ($prive){
                 return true;
