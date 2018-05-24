@@ -85,14 +85,31 @@ footer {
   ul {
     margin-top: 10px;
     padding-left: 45px;
-    color: #585858;
+    color: #949494;
     text-decoration: none;
     li {
+      list-style: decimal;
+      line-height: 2;
       a {
         color:inherit;
         text-decoration: inherit;
         font: 16px Arial;
+        &:hover {
+          color: #000;
+        }
       }
     }
+  }
+}
+.ask, .help {
+  a {
+    text-decoration: none;
+  }
+}
+
+.inner {
+  .content {
+    text-align: left;
+    line-height: 1.5
   }
 }

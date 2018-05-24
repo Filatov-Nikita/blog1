@@ -19,7 +19,7 @@
             <link href="https://fonts.googleapis.com/css?family=Marck+Script&amp;subset=cyrillic" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=Pacifico&amp;subset=latin-ext" rel="stylesheet">
             <script src="{{url('js/jquery-3.2.0.min.js')}}"></script>
-            <meta name="viewport" content="width=device-width, initial-scale=1" >
+            <meta name="viewport" content="width=device-width, initial-scale=0.8" >
         @show
     </head>
     <body>

@@ -96,11 +96,26 @@ footer span {
 .list ul {
   margin-top: 10px;
   padding-left: 45px;
-  color: #585858;
+  color: #949494;
   text-decoration: none;
+}
+.list ul li {
+  list-style: decimal;
+  line-height: 2;
 }
 .list ul li a {
   color: inherit;
   text-decoration: inherit;
   font: 16px Arial;
+}
+.list ul li a:hover {
+  color: #000;
+}
+.ask a,
+.help a {
+  text-decoration: none;
+}
+.inner .content {
+  text-align: left;
+  line-height: 1.5;
 }
