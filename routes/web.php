@@ -38,10 +38,12 @@ Route::group(['prefix' => '/portfolio'], function () {
 });
 
 Route::get('/feedback', 'PageController@feedback')->name('site.main.feedback');
+Route::get('/supportme', 'PageController@supportme')->name('site.main.supportme');
 Route::get('/upload', 'TestController@testGet');
 Route::post('/upload', 'TestController@testPost');
 Route::get('/mail', 'TestController@mail');
 Route::get('/confirmed/{hash}', 'LoginController@confirmed_user')->name('confirmed');
+Route::get('/search', 'PageController@search');
 
 // Route::get('/vue', function () {
 //     return view('pages.test');

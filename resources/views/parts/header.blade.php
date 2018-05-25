@@ -11,8 +11,7 @@
                 <li><a href = "{{ route('site.main.about') }}">Об авторе</a></li>
                 <li><a href = "{{ route('site.main.portfolio') }}">Портфолио</a></li>
                 <li><a href = "{{ route('site.main.articles') }}">Статьи</a></li>
-                <li><a href = "#">Заказчикам</a></li>
-
+                <li><a href="{{route('site.main.feedback')}}">Написать мне</a></li>
             </ul>
         </div>
 
@@ -23,7 +22,9 @@
     <div class="header_img">
         <div class="container">
             <div class="search">
-                <label><input type = "text"></label>
+                <form action="{{url('/search')}}" method="GET">
+                    <label><input type = "text" name = "query"></label>
+               </form>
             </div>
             @if(Auth::check())
             <div class="auth">Вы вошли как {{Auth::user()->name}}</div>
@@ -44,7 +45,7 @@
             <li><a href="{{ route('site.main.about') }}">Об авторе</a></li>
             <li><a href="{{ route('site.main.portfolio') }}">Портфолио</a></li>
             <li><a href="{{ route('site.main.articles') }}">Статьи</a></li>
-            <li><a href="#">Заказчикам</a></li>
+            <li><a href="{{route('site.main.feedback')}}">Заказчикам</a></li>
         </ul>
     </div>
 </nav>
