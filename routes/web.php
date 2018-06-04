@@ -20,7 +20,7 @@ Route::get('/about', function () {
 
 
 Route::group(['prefix' => '/articles'], function () {
-    Route::get('/', 'ArticlesController@listPost')
+    Route::get('/', 'ArticlesController@getPosts')
         ->name('site.main.articles');
     Route::get('/{id}', 'ArticlesController@getPostById')
         ->name('site.main.articlesById');
@@ -44,6 +44,7 @@ Route::post('/upload', 'TestController@testPost');
 Route::get('/mail', 'TestController@mail');
 Route::get('/confirmed/{hash}', 'LoginController@confirmed_user')->name('confirmed');
 Route::get('/search', 'PageController@search');
+Route::get('/tag/{id}', 'ArticlesController@tagSort')->name('tagSort');
 
 // Route::get('/vue', function () {
 //     return view('pages.test');

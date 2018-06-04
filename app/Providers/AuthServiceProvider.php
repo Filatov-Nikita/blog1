@@ -24,64 +24,42 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
     public function boot()
     {
         $this->registerPolicies();
         Gate::define('post_create', function ($user) {
-            $prive = $user->role->prives->where('name', 'creator_articles')->first();
-
-            if ($prive){
-                return true;
-            }
-            return false;
+        	 return $this->getRoles($user, 'creator_articles');
         });
         Gate::define('post_edit', function ($user) {
-            $prive = $user->role->prives->where('name', 'editor_articles')->first();
-
-            if ($prive){
-                return true;
-            }
-            return false;
+			return $this->getRoles($user, 'editor_articles');
         });
         Gate::define('post_delete', function ($user) {
-            $prive = $user->role->prives->where('name', 'deletor_articles')->first();
-
-            if ($prive){
-                return true;
-            }
-            return false;
+			return $this->getRoles($user, 'deletor_articles');
         });
         Gate::define('project_create', function ($user) {
-            $prive = $user->role->prives->where('name', 'creator_projects')->first();
-
-            if ($prive){
-                return true;
-            }
-            return false;
+			return $this->getRoles($user, 'creator_projects');
         });
         Gate::define('project_edit', function ($user) {
-            $prive = $user->role->prives->where('name', 'editor_projects')->first();
-
-            if ($prive){
-                return true;
-            }
-            return false;
+            return $this->getRoles($user, 'editor_projects');
         });
         Gate::define('project_delete', function ($user) {
-            $prive = $user->role->prives->where('name', 'deletor_projects')->first();
-
-            if ($prive){
-                return true;
-            }
-            return false;
+            return $this->getRoles($user, 'deletor_projects');
         });
         Gate::define('user_role_change', function ($user) {
-            $prive = $user->role->prives->where('name', 'user_admin')->first();
-
-            if ($prive){
-                return true;
-            }
-            return false;
+            return $this->getRoles($user, 'user_admin');
+		});
+		Gate::define('tag_admin', function ($user) {
+            return $this->getRoles($user, 'tag_admin');
         });
-    }
+	}
+
+	public function getRoles($user, $roleName) {
+		$prive = $user->role->prives->where('name', $roleName)->first();
+
+		if ($prive){
+			return true;
+		}
+		return false;
+	}
 }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
+use App\Models\Tag;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -17,7 +18,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
        Schema::defaultStringLength(191);
-       View::share('title', 'веб разработчик');
+	   View::share('title', 'веб разработчик');
+	   View::composer(['pages.articles'], function($view) {
+		$tags = Tag::limit(10)->get();
+		$view->with('tags', $tags);
+	   });
     }
 
     /**

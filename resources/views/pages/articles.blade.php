@@ -1,3 +1,6 @@
+@section('widgets')
+	@include('widgets.tags')
+@endsection
 <div class="portfolio">
     <p>Статьи</p>
 </div>

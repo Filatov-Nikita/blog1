@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Tag;
 use App\Http\Requests\RequestPostCreate;
 use App\Classes\Uploader;
 use Illuminate\Support\Facades\Auth;
@@ -41,8 +42,9 @@ class ArticlesAdminController extends Controller
 
     public function postCreate()
     {
-       $this->authorize('post_create');
-        return view('admin.postCreate');
+	   $this->authorize('post_create');
+	   $tags = Tag::get();
+        return view('admin.postCreate', ['tags' => $tags, 'create' => true]);
     }
 
     public function postEdit()
@@ -61,9 +63,10 @@ class ArticlesAdminController extends Controller
     public function postEditById($id)
     {
         $this->authorize('post_edit');
-        session(['post_id' => $id]);
+		session(['post_id' => $id]);
+		$tags = Tag::get();
         $article = Article::find($id);
-        return view('admin.postEditById', ['article' => $article]);
+        return view('admin.postEditById', ['article' => $article,'tags' => $tags, 'create' => false]);
 
     }
 
@@ -75,7 +78,8 @@ class ArticlesAdminController extends Controller
         }
 
         $ArticleModel = Article::create($request->all());
-        $ArticleModel->image = $uploadedPath;
+		$ArticleModel->image = $uploadedPath;
+		$ArticleModel->tags()->attach($request->input('tag'));
         $ArticleModel->save();
         return redirect()->route('admin.createPost')->with('successPostCreate', 'Добавление поста выполнено успешно');
 
@@ -88,7 +92,17 @@ class ArticlesAdminController extends Controller
             if ($uploader->validate($request, 'file', $this->rules)) {
                 $uploadedPath = $uploader->upload();
                 $ArticleModel->image = $uploadedPath;
-            }
+			}
+		$tags = $ArticleModel->tags;
+		$flag = false;
+		foreach ($tags as $tag) {
+			if(in_array($tag->id, $request->input('tag'))) {
+				$flag = true;
+			}
+		}
+		if(!$flag) {
+			$ArticleModel->tags()->attach($request->input('tag'));
+		}
         $ArticleModel->save();
         return redirect()->route('admin.index')->with('success', 'Редактирование поста выполнено успешно');
 
