@@ -22,7 +22,7 @@
 		<label for="tag">Теги поста</label>
 		<select name = "tag[]" multiple id = "tag" class = "multiSelect">
 			@foreach ($tags as $tag)
-				<option value="{{$tag->id}}">{{'@'}}{{$tag->name}}</option>
+				<option @if(in_array($tag->id, $tagsArticle->pluck('id')->toArray())) selected disabled @endif value="{{$tag->id}}">{{'@'}}{{$tag->name}}</option>
 			@endforeach
 		</select>
 		<input type="submit" value="Сохранить"><br>

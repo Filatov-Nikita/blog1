@@ -175,3 +175,13 @@ footer span {
   height: 150px!important;
   font: 22px roboto;
 }
+.tagsList ul {
+  margin-bottom: 10px;
+}
+.tagsList ul li {
+  display: inline-block;
+  margin-left: 8px;
+}
+.tagsList ul li a {
+  color: #1891b9;
+}

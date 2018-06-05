@@ -18,3 +18,7 @@ Route::get('/project/delete/{id}', 'ProjectsAdminController@projectDeleteById')-
 Route::get('/users/rolechange', 'UsersAdminController@listPage')->name('admin.usersList');
 Route::get('/users/rolechange/{id}', 'UsersAdminController@changeRole')->name('admin.changeRoleUser');
 Route::post('/users/rolechange/{id}', 'UsersAdminController@changeRolePost');
+Route::get('/tags/control', 'TagsAdminController@controlPageShow')->name('admin.tagsPage');
+Route::post('/tags/control', 'TagsAdminController@addTag');
+Route::get('/tags/edit/{id}', 'TagsAdminController@editTag')->name('admin.tags.edit');
+Route::post('/tags/edit/{id}', 'TagsAdminController@editTagSave');

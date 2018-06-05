@@ -49,6 +49,13 @@
                                 <li><a href="{{url('/admin/users/rolechange')}}">Назначить роль</a></li>
                                @endcan
                             </ul>
+						</li>
+						<li><a href="">Теги</a>
+                            <ul class = "innerMenu">
+                                @can('user_role_change')
+                                <li><a href="{{url('/admin/tags/control')}}">Управление тегами</a></li>
+                               @endcan
+                            </ul>
                         </li>
                     <li><a href="">Меню</a></li>
                 </ul>
