@@ -37,8 +37,13 @@ class ArticlesController extends Controller
 		return view('layouts.primary', ['page' => 'pages.articles', 'title' => 'Статьи', 'articles' => $articles]);
 	}
 	public function getPosts(Request $request) {
-		$articles = Article::orderBy('created_at', 'DESC')/*->Simplepaginate(4)*/;
-		//$this->paginate($articles, $request);
+		$articles = Article::orderBy('created_at', 'DESC')->Simplepaginate(4);
+        if($request->ajax()) {
+            return [
+                'articles' => view('blocks.article')->with(compact('articles'))->render(),
+                'next_page' => $articles->nextPageUrl()
+            ];
+        }
 		return view('layouts.primary', ['page' => 'pages.articles', 'title' => 'Статьи', 'articles' => $articles]);
 	}
 }
