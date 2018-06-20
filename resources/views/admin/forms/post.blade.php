@@ -13,6 +13,9 @@
 		<br>
 		@if(!$create) <div><img src="{{upload_path($article->image)}}" alt=""></div> @endif
 		<input type="file" name = "file"><br>
+		@if ($errors->has('file'))
+		<span class="error-message"><strong>Пожалуйста выберите изображение</strong></span>
+	@endif
 		<textarea name="content" id = "content">
 			@if(!$create) {{$article->content}} @else {{old('content')}} @endif
 		</textarea><br>

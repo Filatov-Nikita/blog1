@@ -27,6 +27,7 @@ class RequestPostCreate extends FormRequest
            '*' => 'required',
             'title' => 'min:3|max:128',
             'description' => 'min:3',
+            'file' => 'required',
             'content' => 'min:3',
         ];
     }
