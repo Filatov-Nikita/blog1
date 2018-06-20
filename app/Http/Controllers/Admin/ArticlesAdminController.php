@@ -96,7 +96,7 @@ class ArticlesAdminController extends Controller
 		$tags = $ArticleModel->tags;
 		$flag = false;
 		foreach ($tags as $tag) {
-			if(in_array($tag->id, $request->input('tag'))) {
+			if(in_array($tag->id, $request->input('tag') ?? [])) {
 				$flag = true;
 			}
 		}

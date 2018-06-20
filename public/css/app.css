@@ -185,3 +185,9 @@ footer span {
 .tagsList ul li a {
   color: #1891b9;
 }
+.error-input {
+  border: 1px solid #cc0000 !important;
+}
+.error-message {
+  color: #cc0000;
+}

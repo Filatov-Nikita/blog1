@@ -33,8 +33,8 @@ class LoginController extends Controller {
             return redirect()->route('site.main.about');
         } else {
             return redirect()
-                            ->route('site.main.login')
-                            ->with('authError', 'Неправильный логин или пароль!');
+                    ->route('site.main.login')
+                    ->with('authError', 'Неправильный логин или пароль!');
         }
     }
 
