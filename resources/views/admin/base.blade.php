@@ -13,7 +13,7 @@
     <div class="main">
         <div class="menu">
             <div class="top">
-                <div class="logo"><div class="word">{{mb_substr(ucfirst(Auth::user()->name), 0, 1)}}</div></div>
+                <div class="logo"><div class="word"><a style="color:#fff; text-decoration:none" href="{{url('/admin')}}">{{mb_substr(ucfirst(Auth::user()->name), 0, 1)}}</a></div></div>
                 <div class="name">{{Auth::user()->name}}</div>
             </div>
             <div class="bookmark">
@@ -57,7 +57,13 @@
                                @endcan
                             </ul>
                         </li>
-                    <li><a href="">Меню</a></li>
+                    <li><a href="">Меню</a>
+                        <ul class = "innerMenu">
+                           
+                            <li><a href="{{url('/admin/menu/control')}}">Управление пунктами меню</a></li>
+
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

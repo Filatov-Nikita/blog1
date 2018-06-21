@@ -12,8 +12,8 @@
 				<li><a href="{{url('/supportme')}}">Поддержать меня</a></li>
 			</ul>
 			<div class="social">
-				<a href=""><img src="{{url('img/vk.png')}}" alt=""></a>
-				<a href=""><img src="{{url('img/insta.png')}}" alt=""></a>
+				<a href="https://vk.com/id140434688"><img src="{{url('img/vk.png')}}" alt=""></a>
+				<a href="https://www.instagram.com/adelya_f4242/"><img src="{{url('img/insta.png')}}" alt=""></a>
 				<a href=""><img src="{{url('img/telegram.png')}}" alt=""></a>
 			</div>
 		</div>

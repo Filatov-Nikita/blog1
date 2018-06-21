@@ -1,7 +1,7 @@
 @extends('admin.base')
 @section('right_column')
-    <div class="header">Добавление нового проекта</div>
-    <div class="help_header">Внесите в форму данные для создания нового проекта,<br> все поля необходимы для заполнения !</div>
+    <div class="header">Редактирование проекта</div>
+    <div class="help_header">Внесите в форму данные для редактирования проекта,<br> все поля необходимы для заполнения !</div>
     @if(session('successEditProject'))
         <style>
             .success {

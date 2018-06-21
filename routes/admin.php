@@ -22,3 +22,4 @@ Route::get('/tags/control', 'TagsAdminController@controlPageShow')->name('admin.
 Route::post('/tags/control', 'TagsAdminController@addTag');
 Route::get('/tags/edit/{id}', 'TagsAdminController@editTag')->name('admin.tags.edit');
 Route::post('/tags/edit/{id}', 'TagsAdminController@editTagSave');
+Route::get('/menu/control', 'AdminController@menuControl');

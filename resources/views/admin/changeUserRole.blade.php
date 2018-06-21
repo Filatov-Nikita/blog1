@@ -1,7 +1,7 @@
 @extends('admin.base')
 @section('right_column')
 <div class="header">Изменение роли пользователя {{$user->name}}</div>
-<div class="help_header">Выберите из списка роль и назначте ее пользователю !</div>
+<div class="help_header">Выберите из списка роль и назначьте ее пользователю!</div>
 <div class="form">
     <form action="" method="POST" enctype="multipart/form-data">
         <div class="info_user">

@@ -4,7 +4,9 @@
     <div class = "container">
         <div class = "menu_btn"></div>
         <div class = "option">
-            <input type = "text" placeholder="Search">
+            <form action="{{url('/search')}}" method="GET">
+                <input type = "text" name = "query" placeholder="Search">
+            </form>
             <ul>
                 <li><a href = "{{ route('site.main.login') }}">Войти</a></li>
                 <li><a href = "{{ route('site.main.index') }}">Главная</a></li>
