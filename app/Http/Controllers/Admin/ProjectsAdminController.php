@@ -41,7 +41,7 @@ class ProjectsAdminController extends Controller
         return view('admin.projectCreate');
     }
 
-    public function projectCreateSend(RequestPostCreate $request, Uploader $uploader)
+    public function projectCreateSend(Request $request, Uploader $uploader)
     {
         $this->authorize('create', Project::class);
         $this->files = ['logo', 'image'];
@@ -57,7 +57,7 @@ class ProjectsAdminController extends Controller
         $ProjectModel->save();
         return redirect()->route('admin.index')->with('success', 'Добавление проекта выполнено успешно');
     }
-    public function projectEditSend(RequestPostCreate $request, Uploader $uploader)
+    public function projectEditSend(Request $request, Uploader $uploader)
     {
         $this->authorize('edit', Project::class);
         $ProjectModel = Project::find(session('post_id'));
