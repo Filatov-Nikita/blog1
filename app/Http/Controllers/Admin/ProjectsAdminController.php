@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
-use App\Http\Requests\RequestPostCreate;
+use App\Http\Requests\RequestProject;
 use App\Classes\Uploader;
 class ProjectsAdminController extends Controller
 {
@@ -41,7 +41,7 @@ class ProjectsAdminController extends Controller
         return view('admin.projectCreate');
     }
 
-    public function projectCreateSend(Request $request, Uploader $uploader)
+    public function projectCreateSend(RequestProject $request, Uploader $uploader)
     {
         $this->authorize('create', Project::class);
         $this->files = ['logo', 'image'];
@@ -57,7 +57,7 @@ class ProjectsAdminController extends Controller
         $ProjectModel->save();
         return redirect()->route('admin.index')->with('success', 'Добавление проекта выполнено успешно');
     }
-    public function projectEditSend(Request $request, Uploader $uploader)
+    public function projectEditSend(RequestProject $request, Uploader $uploader)
     {
         $this->authorize('edit', Project::class);
         $ProjectModel = Project::find(session('post_id'));
