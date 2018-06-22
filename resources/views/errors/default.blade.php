@@ -7,4 +7,4 @@
     }
 </style>
 Error {{$errorCode}} {{$errorMessage}} <br>
-Попробуйте начать с <a href="{{url('/')}}">главной</a>!
+Попробуйте начать с <a style="color:#fff" href="{{url('/')}}">главной</a>!
